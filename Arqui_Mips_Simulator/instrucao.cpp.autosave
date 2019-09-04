@@ -1,0 +1,26 @@
+#include "instrucao.h"
+
+QString Instrucao::getOperacao() const
+{
+    return operacao;
+}
+
+QString Instrucao::getOp1() const
+{
+    return op1;
+}
+
+QString Instrucao::getOp2() const
+{
+    return op2;
+}
+
+QString Instrucao::getOp3() const
+{
+    return op3;
+}
+
+Instrucao::Instrucao()
+{
+    
+}
