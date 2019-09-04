@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Janela</class>
+ <widget class="QWidget" name="Janela">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1643</width>
+    <height>673</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Janela</string>
+  </property>
+  <widget class="QPushButton" name="btnNext">
+   <property name="geometry">
+    <rect>
+     <x>1490</x>
+     <y>640</y>
+     <width>141</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Próxima Instrução</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tableView">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>181</width>
+     <height>611</height>
+    </rect>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::EditKeyPressed</set>
+   </property>
+   <property name="tabKeyNavigation">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnOpen">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>640</y>
+     <width>181</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Carregar Instruções</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>30</y>
+     <width>231</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="txtOPCODEBUSCA"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>OP1:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="txtOP1BUSCA"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>OP2:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="txtOP2BUSCA"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>OP3:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="txtOP3BUSCA"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>V1:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="txtBUSCAV1"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>V2:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="txtBUSCAV2"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>V3:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="txtBUSCAV3"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>PC:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="txtBUSCAPC"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_17">
+      <property name="text">
+       <string>Válido:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QRadioButton" name="rdValido_BUSCA">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Instrução:</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label_18">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>0</y>
+     <width>47</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>BUSCA</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="boxPredicao">
+   <property name="geometry">
+    <rect>
+     <x>1230</x>
+     <y>640</y>
+     <width>121</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_19">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>0</y>
+     <width>71</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>DECODE</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>30</y>
+     <width>231</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout_2">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="txtOPCODEDECODE"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string>OP1:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="txtOP1DECODE"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_10">
+      <property name="text">
+       <string>OP2:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="txtOP2DECODE"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_11">
+      <property name="text">
+       <string>OP3:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="txtOP3DECODE"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_12">
+      <property name="text">
+       <string>V1:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="txtDECODEV1"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_13">
+      <property name="text">
+       <string>V2:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="txtDECODEV2"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_14">
+      <property name="text">
+       <string>V3:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="txtDECODEV3"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_15">
+      <property name="text">
+       <string>PC:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="txtDECODEPC"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_20">
+      <property name="text">
+       <string>Válido:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QRadioButton" name="rdValido_DECODE">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_16">
+      <property name="text">
+       <string>Instrução:</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>30</y>
+     <width>231</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout_3">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="txtOPCODEEXEC"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_21">
+      <property name="text">
+       <string>OP1:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="txtOP1EXEC"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_22">
+      <property name="text">
+       <string>OP2:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="txtOP2EXEC"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_23">
+      <property name="text">
+       <string>OP3:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="txtOP3EXEC"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_24">
+      <property name="text">
+       <string>V1:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="txtEXECV1"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_25">
+      <property name="text">
+       <string>V2:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="txtEXECV2"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_26">
+      <property name="text">
+       <string>V3:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="txtEXECV3"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_27">
+      <property name="text">
+       <string>PC:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="txtEXECPC"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_28">
+      <property name="text">
+       <string>Válido:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QRadioButton" name="rdValido_EXEC">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_29">
+      <property name="text">
+       <string>Instrução:</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label_30">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>0</y>
+     <width>81</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>EXECUÇÃO</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>960</x>
+     <y>30</y>
+     <width>231</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout_4">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="txtOPCODEMEMOR"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_31">
+      <property name="text">
+       <string>OP1:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="txtOP1MEMOR"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_32">
+      <property name="text">
+       <string>OP2:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="txtOP2MEMOR"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_33">
+      <property name="text">
+       <string>OP3:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="txtOP3MEMOR"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_34">
+      <property name="text">
+       <string>V1:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="txtMEMORV1"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_35">
+      <property name="text">
+       <string>V2:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="txtMEMORV2"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_36">
+      <property name="text">
+       <string>V3:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="txtMEMORV3"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_37">
+      <property name="text">
+       <string>PC:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="txtMEMORPC"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_38">
+      <property name="text">
+       <string>Válido:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QRadioButton" name="rdValido_MEMOR">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_39">
+      <property name="text">
+       <string>Instrução:</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label_40">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>0</y>
+     <width>81</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>MEMORIA</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_41">
+   <property name="geometry">
+    <rect>
+     <x>1280</x>
+     <y>0</y>
+     <width>91</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>WRITE BACK</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_5">
+   <property name="geometry">
+    <rect>
+     <x>1210</x>
+     <y>30</y>
+     <width>231</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout_5">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="txtOPCODEWBACK"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_42">
+      <property name="text">
+       <string>OP1:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="txtOP1WBACK"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_43">
+      <property name="text">
+       <string>OP2:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="txtOP2WBACK"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_44">
+      <property name="text">
+       <string>OP3:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="txtOP3WBACK"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_45">
+      <property name="text">
+       <string>V1:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="txtWBACKV1"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_46">
+      <property name="text">
+       <string>V2:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="txtWBACKV2"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_47">
+      <property name="text">
+       <string>V3:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="txtWBACKV3"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_48">
+      <property name="text">
+       <string>PC:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="txtWBACKPC"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_49">
+      <property name="text">
+       <string>Válido:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QRadioButton" name="rdValido_WBACK">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_50">
+      <property name="text">
+       <string>Instrução:</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QTableView" name="tableRegistrador">
+   <property name="geometry">
+    <rect>
+     <x>1450</x>
+     <y>20</y>
+     <width>181</width>
+     <height>611</height>
+    </rect>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::EditKeyPressed</set>
+   </property>
+   <property name="tabKeyNavigation">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_6">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>320</y>
+     <width>361</width>
+     <height>88</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout_6">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_51">
+      <property name="text">
+       <string>Quantidade Válidas:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="lbl_Validas">
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_52">
+      <property name="text">
+       <string>Quantidade Inválidas:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="lbl_Invalidas">
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_53">
+      <property name="text">
+       <string>Taxa de Validas:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLabel" name="lbl_Taxa">
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_55">
+      <property name="text">
+       <string>Pulsos:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLabel" name="lbl_Pulsos">
+      <property name="text">
+       <string>0%</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="btnLoadAll">
+   <property name="geometry">
+    <rect>
+     <x>1360</x>
+     <y>640</y>
+     <width>121</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Exec Full</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

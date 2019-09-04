@@ -1,0 +1,209 @@
+#include "janela.h"
+#include "ui_janela.h"
+
+Janela::Janela(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::Janela)
+{
+    ui->setupUi(this);
+    ui->boxPredicao->addItem("Sempre Ignorar",0);
+    ui->boxPredicao->addItem("Sempre Tomar",1);
+    ui->boxPredicao->addItem("Tabela de Predição",2);
+    model_reg = new QStandardItemModel(32,2,this);
+    model_reg->setHorizontalHeaderItem(0, new QStandardItem(QString("Endereço")));
+    model_reg->setHorizontalHeaderItem(1, new QStandardItem(QString("Instrução")));
+
+    for(int i=0; i<32;i++){
+        QStandardItem *valor_k = new QStandardItem(QString::number(i));
+        QStandardItem *valor_i = new QStandardItem(QString::number(num1.getR(i)));
+        model_reg->setItem(i,1,valor_i);
+        model_reg->setItem(i,0,valor_k);
+    }
+    ui->tableRegistrador->setModel(model_reg);
+    ui->tableRegistrador->verticalHeader()->hide();
+    ui->tableRegistrador->setColumnWidth(0, 89);
+    ui->tableRegistrador->setColumnWidth(1, 89);
+    ui->tableRegistrador->horizontalHeader()->setSectionResizeMode (QHeaderView::Fixed);
+    ui->tableRegistrador->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+}
+
+Janela::~Janela()
+{
+    delete ui;
+}
+
+void Janela::on_btnOpen_clicked()
+{
+    QString endereco = QFileDialog::getOpenFileName(this, tr("Open File"),"/home", tr("*.txt"));
+    if(num1.abreArq(endereco)){
+        int tamanho = num1.getSizeQMAP();
+        model = new QStandardItemModel(tamanho,2,this); //2 Rows and 3 Columns
+        model->setHorizontalHeaderItem(0, new QStandardItem(QString("PC")));
+        model->setHorizontalHeaderItem(1, new QStandardItem(QString("Instrução")));
+        for(int i=0; i<tamanho;i++){
+            QStandardItem *valor_k = new QStandardItem(QString::number(i));
+            QStandardItem *valor_i = new QStandardItem(num1.getvalorQMAP(i));
+            model->setItem(i,1,valor_i);
+            model->setItem(i,0,valor_k);
+        }
+        ui->tableView->setModel(model);
+        ui->tableView->verticalHeader()->hide();
+        ui->tableView->setColumnWidth(0, 27);
+        ui->tableView->setColumnWidth(1, 152);
+        ui->tableView->horizontalHeader()->setSectionResizeMode (QHeaderView::Fixed);
+        ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    }
+
+
+    //num1.proximo((ui->boxPredicao->itemData(ui->boxPredicao->currentIndex())).toInt());
+    num1.alimenta_inst();
+
+    cout << "OPCODE: " << num1.mod_busca.getOPCODE().toStdString() << "OP1: " << num1.mod_busca.getOP1().toStdString() << "OP2: "<<
+            num1.mod_busca.getOP2().toStdString() << "OP3: "<< num1.mod_busca.getOP3().toStdString() << endl;
+
+    ui->txtBUSCAPC->setText(QString::number(num1.mod_busca.getPC()));
+    ui->txtBUSCAV1->setText(QString::number(num1.mod_busca.getV1()));
+    ui->txtBUSCAV2->setText(QString::number(num1.mod_busca.getV2()));
+    ui->txtBUSCAV3->setText(QString::number(num1.mod_busca.getV3()));
+    ui->txtOPCODEBUSCA->setText(num1.mod_busca.getOPCODE());
+    ui->txtOP1BUSCA->setText(num1.mod_busca.getOP1());
+    ui->txtOP2BUSCA->setText(num1.mod_busca.getOP2());
+    ui->txtOP3BUSCA->setText(num1.mod_busca.getOP3());
+    if(num1.mod_busca.getValido()){
+        ui->rdValido_BUSCA->setEnabled(true);
+    }else{
+        ui->rdValido_BUSCA->setEnabled(false);
+    }
+
+
+
+
+}
+
+void Janela::on_btnNext_clicked()
+{
+    num1.proximo((ui->boxPredicao->itemData(ui->boxPredicao->currentIndex())).toInt());
+    if(!num1.mod_busca.getOPCODE().isEmpty()){
+        ui->txtBUSCAPC->setText(QString::number(num1.mod_busca.getPC()));
+        ui->txtBUSCAV1->setText(QString::number(num1.mod_busca.getV1()));
+        ui->txtBUSCAV2->setText(QString::number(num1.mod_busca.getV2()));
+        ui->txtBUSCAV3->setText(QString::number(num1.mod_busca.getV3()));
+        ui->txtOPCODEBUSCA->setText(num1.mod_busca.getOPCODE());
+        ui->txtOP1BUSCA->setText(num1.mod_busca.getOP1());
+        ui->txtOP2BUSCA->setText(num1.mod_busca.getOP2());
+        ui->txtOP3BUSCA->setText(num1.mod_busca.getOP3());
+        if(num1.mod_busca.getValido()){
+            ui->rdValido_BUSCA->setChecked(true);
+        }else{
+            ui->rdValido_BUSCA->setChecked(false);
+        }
+    }
+    //DECODE
+    if(!num1.mod_decode.getOPCODE().isEmpty()){
+        ui->txtDECODEPC->setText(QString::number(num1.mod_decode.getPC()));
+        ui->txtDECODEV1->setText(QString::number(num1.mod_decode.getV1()));
+        ui->txtDECODEV2->setText(QString::number(num1.mod_decode.getV2()));
+        ui->txtDECODEV3->setText(QString::number(num1.mod_decode.getV3()));
+        ui->txtOPCODEDECODE->setText(num1.mod_decode.getOPCODE());
+        ui->txtOP1DECODE->setText(num1.mod_decode.getOP1());
+        ui->txtOP2DECODE->setText(num1.mod_decode.getOP2());
+        ui->txtOP3DECODE->setText(num1.mod_decode.getOP3());
+        if(num1.mod_decode.getValido()){
+            ui->rdValido_DECODE->setChecked(true);
+        }else{
+            ui->rdValido_DECODE->setChecked(false);
+        }
+    }
+        //EXEC
+    if(!num1.mod_execu.getOPCODE().isEmpty()){
+        ui->txtEXECPC->setText(QString::number(num1.mod_execu.getPC()));
+        ui->txtEXECV1->setText(QString::number(num1.mod_execu.getV1()));
+        ui->txtEXECV2->setText(QString::number(num1.mod_execu.getV2()));
+        ui->txtEXECV3->setText(QString::number(num1.mod_execu.getV3()));
+        ui->txtOPCODEEXEC->setText(num1.mod_execu.getOPCODE());
+        ui->txtOP1EXEC->setText(num1.mod_execu.getOP1());
+        ui->txtOP2EXEC->setText(num1.mod_execu.getOP2());
+        ui->txtOP3EXEC->setText(num1.mod_execu.getOP3());
+        if(num1.mod_execu.getValido()){
+            ui->rdValido_EXEC->setChecked(true);
+        }else{
+            ui->rdValido_EXEC->setChecked(false);
+        }
+    }
+        //MEMORIA
+    if(!num1.mod_mem.getOPCODE().isEmpty()){
+        ui->txtMEMORPC->setText(QString::number(num1.mod_mem.getPC()));
+        ui->txtMEMORV1->setText(QString::number(num1.mod_mem.getV1()));
+        ui->txtMEMORV2->setText(QString::number(num1.mod_mem.getV2()));
+        ui->txtMEMORV3->setText(QString::number(num1.mod_mem.getV3()));
+        ui->txtOPCODEMEMOR->setText(num1.mod_mem.getOPCODE());
+        ui->txtOP1MEMOR->setText(num1.mod_mem.getOP1());
+        ui->txtOP2MEMOR->setText(num1.mod_mem.getOP2());
+        ui->txtOP3MEMOR->setText(num1.mod_mem.getOP3());
+        if(num1.mod_mem.getValido()){
+            ui->rdValido_MEMOR->setChecked(true);
+        }else{
+            ui->rdValido_MEMOR->setChecked(false);
+        }
+    }
+
+        //WBACK.
+    if(!num1.mod_wback.getOPCODE().isEmpty()){
+        ui->txtWBACKPC->setText(QString::number(num1.mod_wback.getPC()));
+        ui->txtWBACKV1->setText(QString::number(num1.mod_wback.getV1()));
+        ui->txtWBACKV2->setText(QString::number(num1.mod_wback.getV2()));
+        ui->txtWBACKV3->setText(QString::number(num1.mod_wback.getV3()));
+        ui->txtOPCODEWBACK->setText(num1.mod_wback.getOPCODE());
+        ui->txtOP1WBACK->setText(num1.mod_wback.getOP1());
+        ui->txtOP2WBACK->setText(num1.mod_wback.getOP2());
+        ui->txtOP3WBACK->setText(num1.mod_wback.getOP3());
+        if(num1.mod_wback.getValido()){
+            ui->rdValido_WBACK->setChecked(true);
+        }else{
+            ui->rdValido_WBACK->setChecked(false);
+        }
+
+    }
+    int txPercent;
+    if(this->num1.getQntInvalidas()==0)
+       txPercent = (this->num1.getQntValidas())*100;
+    else
+       txPercent = ((this->num1.getQntValidas())/(this->num1.getQntInvalidas()))*100;
+
+    ui->lbl_Validas->setText(QString::number(this->num1.getQntValidas()));
+    ui->lbl_Invalidas->setText(QString::number(this->num1.getQntInvalidas()));
+    ui->lbl_Pulsos->setText(QString::number(this->num1.getPulsos()));
+    ui->lbl_Taxa->setText(QString::number(txPercent));
+    ui->lbl_Taxa->setText((ui->lbl_Taxa->text()).append("%"));
+
+    this->atualizaReg();
+}
+
+
+
+void Janela::on_boxPredicao_currentIndexChanged(const QString &arg1)
+{
+    num1.zerar();
+
+}
+
+void Janela::atualizaReg(){
+    for(int i=0; i<32;i++){
+        QStandardItem *valor_k = new QStandardItem(QString::number(i));
+        QStandardItem *valor_i = new QStandardItem(QString::number(num1.getR(i)));
+        model_reg->setItem(i,1,valor_i);
+        model_reg->setItem(i,0,valor_k);
+    }
+    ui->tableRegistrador->setModel(model_reg);
+}
+
+void Janela::on_btnLoadAll_clicked()
+{
+    while(num1.getPC_MASTER()<(num1.getListasize())){
+        this->ui->btnNext->click();
+    }
+    while(this->ui->txtOPCODEWBACK->text()!="NO INSTRUCTION"){
+        this->ui->btnNext->click();
+    }
+}
