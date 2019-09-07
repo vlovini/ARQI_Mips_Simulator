@@ -1,0 +1,14 @@
+INPUT(
+./release\instrucao.o
+./release\main.o
+./release\mainwindow.o
+./release\busca.o
+./release\barreirabuscadecodifica.o
+./release\decodifica.o
+./release\barreiradecoexec.o
+./release\execucao.o
+./release\barreiraexecmem.o
+./release\memoriadados.o
+./release\barreiramemwb.o
+./release\moc_mainwindow.o
+);

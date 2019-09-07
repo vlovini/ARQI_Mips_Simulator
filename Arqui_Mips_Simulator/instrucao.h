@@ -10,6 +10,7 @@ private:
     QString op2;
     QString op3;
 public:
+    Instrucao();
     Instrucao(QString inst);
     QString getOperacao() const;
     QString getOp1() const;

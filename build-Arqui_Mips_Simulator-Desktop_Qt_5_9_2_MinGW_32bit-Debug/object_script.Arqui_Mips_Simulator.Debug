@@ -1,0 +1,14 @@
+INPUT(
+./debug\instrucao.o
+./debug\main.o
+./debug\mainwindow.o
+./debug\busca.o
+./debug\barreirabuscadecodifica.o
+./debug\decodifica.o
+./debug\barreiradecoexec.o
+./debug\execucao.o
+./debug\barreiraexecmem.o
+./debug\memoriadados.o
+./debug\barreiramemwb.o
+./debug\moc_mainwindow.o
+);

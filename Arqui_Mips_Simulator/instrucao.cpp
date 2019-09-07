@@ -20,6 +20,11 @@ QString Instrucao::getOp3() const
     return op3;
 }
 
+Instrucao::Instrucao()
+{
+
+}
+
 Instrucao::Instrucao(QString inst)
 {
     QList<QString> lista = inst.split(' ');

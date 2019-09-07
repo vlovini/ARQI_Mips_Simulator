@@ -30,7 +30,7 @@ class BarreiraDecoExec{
 }
 class decodifica{
     - BarreiraOut: *BarreiraDecoExec
-    - Registradores: QList<QString>
+    - Registradores: QList<int>
     + Executar( inst: instrucao):void
     + WB( end:int, dado:int):void
 }
