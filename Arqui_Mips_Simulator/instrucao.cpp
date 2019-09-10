@@ -27,6 +27,8 @@ Instrucao::Instrucao()
 
 Instrucao::Instrucao(QString inst)
 {
+    inst.replace('(',' ');
+    inst.replace(')',' ');
     QList<QString> lista = inst.split(' ');
 
     operacao = lista[0];

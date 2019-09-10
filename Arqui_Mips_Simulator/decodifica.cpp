@@ -34,6 +34,7 @@ void Decodifica::Executar(Instrucao ins)
     }else
     {
         barreiraOut->setOperadorY(registradores[op.toInt()]);
+
     }
     op=ins.getOp3();
     if(op.contains('$'))
@@ -42,6 +43,6 @@ void Decodifica::Executar(Instrucao ins)
         barreiraOut->setOperadorZ(registradores[op.toInt()]);
     }else
     {
-        barreiraOut->setOperadorZ(registradores[op.toInt()]);
+        barreiraOut->setOperadorZ(op.toInt());
     }
 }

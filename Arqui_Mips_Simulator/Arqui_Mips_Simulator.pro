@@ -27,11 +27,27 @@ CONFIG += c++11
 SOURCES += \
         instrucao.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    busca.cpp \
+    barreirabuscadecodifica.cpp \
+    decodifica.cpp \
+    barreiradecoexec.cpp \
+    execucao.cpp \
+    barreiraexecmem.cpp \
+    memoriadados.cpp \
+    barreiramemwb.cpp
 
 HEADERS += \
         instrucao.h \
-        mainwindow.h
+        mainwindow.h \
+    busca.h \
+    barreirabuscadecodifica.h \
+    decodifica.h \
+    barreiradecoexec.h \
+    execucao.h \
+    barreiraexecmem.h \
+    memoriadados.h \
+    barreiramemwb.h
 
 FORMS += \
         mainwindow.ui

@@ -40,7 +40,17 @@ void BarreiraDecoExec::setOperacao(const QString &value)
     operacao = value;
 }
 
+void BarreiraDecoExec::trigger()
+{
+    exe->Executar(operadorX,operadorY,operadorZ, operacao);
+}
+
 BarreiraDecoExec::BarreiraDecoExec()
 {
 
+}
+
+BarreiraDecoExec::BarreiraDecoExec(Execucao *ex)
+{
+  exe = ex;
 }

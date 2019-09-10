@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    Instrucao minhaIntrucao("addi $t1, $t2, 1");
+    Instrucao minhaIntrucao("lw $t1, base($t2)");
     QString operacao = minhaIntrucao.getOperacao();
     operacao = minhaIntrucao.getOp1();
     operacao = minhaIntrucao.getOp2();
