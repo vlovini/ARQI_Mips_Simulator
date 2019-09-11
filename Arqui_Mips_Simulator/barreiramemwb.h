@@ -15,6 +15,8 @@ public:
     void Trigger();
     void setDado(int value);
     void setEndereco(int value);
+    int getEndereco() const;
+    int getDado() const;
 };
 
 #endif // BARREIRAMEMWB_H

@@ -14,6 +14,7 @@ public:
     Instrucao getInst() const;
     void setInst(const Instrucao &value);
     void Trigger();
+    Instrucao getInst();
 };
 
 #endif // BARREIRABUSCADECODIFICA_H

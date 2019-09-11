@@ -1,5 +1,10 @@
 #include "decodifica.h"
 
+QList<int> Decodifica::getRegistradores() const
+{
+    return registradores;
+}
+
 Decodifica::Decodifica()
 {
 

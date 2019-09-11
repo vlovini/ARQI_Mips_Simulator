@@ -2,6 +2,11 @@
 #include <QMessageBox>
 #include "instrucao.h"
 
+QList<QString> Busca::getMemoriaPrograma() const
+{
+    return memoriaPrograma;
+}
+
 Busca::Busca(QString end, BarreiraBuscaDecodifica *barreira)
 {
 

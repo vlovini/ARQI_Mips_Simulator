@@ -25,3 +25,8 @@ void BarreiraBuscaDecodifica::Trigger()
     deco->Executar(inst);
 }
 
+Instrucao BarreiraBuscaDecodifica::getInst()
+{
+    return inst;
+}
+

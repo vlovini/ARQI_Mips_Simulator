@@ -1,5 +1,10 @@
 #include "memoriadados.h"
 
+QList<int> MemoriaDados::getMemoria() const
+{
+    return memoria;
+}
+
 MemoriaDados::MemoriaDados()
 {
 

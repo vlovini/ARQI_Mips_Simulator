@@ -11,6 +11,7 @@ public:
     MemoriaDados();
     MemoriaDados(BarreiraMemWB *br);
     void Executar(int end, int dado, bool W_R);
+    QList<int> getMemoria() const;
 };
 
 #endif // MEMORIADADOS_H

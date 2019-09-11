@@ -13,6 +13,7 @@ private:
 public:
     Busca(QString end, BarreiraBuscaDecodifica* barreira );
     void Executar(int pc);
+    QList<QString> getMemoriaPrograma() const;
 };
 
 #endif // BUSCA_H

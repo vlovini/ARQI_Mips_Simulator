@@ -30,12 +30,25 @@ Instrucao::Instrucao(QString inst)
     inst.replace('(',' ');
     inst.replace(')',' ');
     QList<QString> lista = inst.split(' ');
-
+    op1="";
+    op2="";
+    op3="";
     operacao = lista[0];
-    op1 = lista[1];
-    op2 = lista[2];
-    op3 = lista[3];
-    op1.remove(',');
-    op2.remove(',');
-    op3.remove(',');
+    if(lista.length()>1)
+    {
+        op1 = lista[1];
+        op1.remove(',');
+    }
+    if(lista.length()>2)
+    {
+        op2 = lista[2];
+        op2.remove(',');
+    }
+    if(lista.length()>3)
+    {
+        op3 = lista[3];
+        op3.remove(',');
+    }
+
+
 }
