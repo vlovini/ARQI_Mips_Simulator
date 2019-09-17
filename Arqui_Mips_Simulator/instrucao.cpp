@@ -22,7 +22,10 @@ QString Instrucao::getOp3() const
 
 Instrucao::Instrucao()
 {
-
+    operacao = "nop";
+    op1 = "0";
+    op2 = "0";
+    op3 = "0";
 }
 
 Instrucao::Instrucao(QString inst)

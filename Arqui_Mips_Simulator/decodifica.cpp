@@ -33,7 +33,7 @@ void Decodifica::Executar(Instrucao ins,int pc)
     if(op.contains('$'))
     {
         op.remove("$");
-        barreiraOut->setOperadorX(registradores[op.toInt()]);
+        barreiraOut->setOperadorX(op.toInt());
     }else
     {
         barreiraOut->setOperadorX(registradores[op.toInt()]);

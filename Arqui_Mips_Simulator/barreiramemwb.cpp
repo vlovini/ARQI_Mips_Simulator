@@ -9,10 +9,10 @@ void BarreiraMemWB::setEndereco(int value)
 {
     endereco = value;
 }
-void BarreiraMemWB::setDecodifica(Decodifica *d)
-{
-    deco=d;
-}
+//void BarreiraMemWB::setDecodifica(Decodifica *d)
+//{
+//    deco=d;
+//}
 
 int BarreiraMemWB::getEndereco() const
 {
@@ -29,7 +29,11 @@ BarreiraMemWB::BarreiraMemWB()
 
 }
 
-void BarreiraMemWB::Trigger()
-{
+//void BarreiraMemWB::Trigger()
+//{
+//   if(endereco != 0)
+//   {
+        //deco->W_B(endereco,dado);
+//    }
 
-}
+//}

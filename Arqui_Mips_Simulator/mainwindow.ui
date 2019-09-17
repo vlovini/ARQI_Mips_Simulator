@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1100</width>
-    <height>487</height>
+    <height>496</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,8 +53,8 @@
    <widget class="QPushButton" name="btnClock">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>370</y>
+      <x>40</x>
+      <y>380</y>
       <width>711</width>
       <height>61</height>
      </rect>
@@ -414,6 +414,58 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QRadioButton" name="rbSemPred">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>10</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sem predição</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rbPredFixa">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>10</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Predição fixa</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rbPredicaoTabela">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>10</y>
+      <width>121</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Predição por tabela</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="chbTomado">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>10</y>
+      <width>111</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sempre tomado?</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

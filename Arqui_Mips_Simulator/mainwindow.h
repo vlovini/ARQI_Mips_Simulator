@@ -7,6 +7,9 @@
 #include "barreiraexecmem.h"
 #include "memoriadados.h"
 #include "barreiramemwb.h"
+#include "mecanismopredicao.h"
+#include "predicaofixa.h"
+#include "predicaotabela.h"
 namespace Ui {
 class MainWindow;
 }
@@ -25,6 +28,8 @@ private slots:
 
     void on_btnClock_clicked();
 
+    void on_radioButton_pressed();
+
 private:
     Ui::MainWindow *ui;
     int pc;
@@ -36,6 +41,7 @@ private:
     BarreiraExecMem *exe_mem;
     MemoriaDados *memDado;
     BarreiraMemWB *mem_wb;
+    MecanismoPredicao *predicao;
 
 
 

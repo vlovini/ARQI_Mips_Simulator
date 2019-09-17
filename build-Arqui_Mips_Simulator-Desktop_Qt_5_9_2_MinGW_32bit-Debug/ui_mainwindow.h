@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -21,6 +22,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
@@ -97,6 +99,10 @@ public:
     QLineEdit *lneEnderecoMemWB;
     QLabel *label_22;
     QLineEdit *lneDadoMemWB;
+    QRadioButton *rbSemPred;
+    QRadioButton *rbPredFixa;
+    QRadioButton *rbPredicaoTabela;
+    QCheckBox *chbTomado;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -105,7 +111,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1100, 487);
+        MainWindow->resize(1100, 496);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         lneEnderecoArquivo = new QLineEdit(centralWidget);
@@ -119,7 +125,7 @@ public:
         btnCarregar->setGeometry(QRect(230, 20, 75, 23));
         btnClock = new QPushButton(centralWidget);
         btnClock->setObjectName(QStringLiteral("btnClock"));
-        btnClock->setGeometry(QRect(70, 370, 711, 61));
+        btnClock->setGeometry(QRect(40, 380, 711, 61));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(820, 380, 21, 51));
@@ -400,6 +406,18 @@ public:
 
         horizontalLayout->addWidget(groupBox_7);
 
+        rbSemPred = new QRadioButton(centralWidget);
+        rbSemPred->setObjectName(QStringLiteral("rbSemPred"));
+        rbSemPred->setGeometry(QRect(380, 10, 82, 17));
+        rbPredFixa = new QRadioButton(centralWidget);
+        rbPredFixa->setObjectName(QStringLiteral("rbPredFixa"));
+        rbPredFixa->setGeometry(QRect(480, 10, 82, 17));
+        rbPredicaoTabela = new QRadioButton(centralWidget);
+        rbPredicaoTabela->setObjectName(QStringLiteral("rbPredicaoTabela"));
+        rbPredicaoTabela->setGeometry(QRect(750, 10, 121, 17));
+        chbTomado = new QCheckBox(centralWidget);
+        chbTomado->setObjectName(QStringLiteral("chbTomado"));
+        chbTomado->setGeometry(QRect(570, 10, 111, 17));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -451,6 +469,10 @@ public:
         groupBox_7->setTitle(QApplication::translate("MainWindow", "MemWB", Q_NULLPTR));
         label_21->setText(QApplication::translate("MainWindow", "Endere\303\247o:", Q_NULLPTR));
         label_22->setText(QApplication::translate("MainWindow", "Dado:", Q_NULLPTR));
+        rbSemPred->setText(QApplication::translate("MainWindow", "Sem predi\303\247\303\243o", Q_NULLPTR));
+        rbPredFixa->setText(QApplication::translate("MainWindow", "Predi\303\247\303\243o fixa", Q_NULLPTR));
+        rbPredicaoTabela->setText(QApplication::translate("MainWindow", "Predi\303\247\303\243o por tabela", Q_NULLPTR));
+        chbTomado->setText(QApplication::translate("MainWindow", "Sempre tomado?", Q_NULLPTR));
     } // retranslateUi
 
 };

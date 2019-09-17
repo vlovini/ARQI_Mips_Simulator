@@ -58,4 +58,10 @@ BarreiraDecoExec::BarreiraDecoExec()
 BarreiraDecoExec::BarreiraDecoExec(Execucao *ex)
 {
   exe = ex;
+  pcInstrucaoAtual = 0;
+  operacao = "";
+  operadorX = 0;
+  operadorY = 0;
+  operadorZ = 0;
+
 }

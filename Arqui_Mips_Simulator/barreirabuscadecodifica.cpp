@@ -13,6 +13,7 @@ int BarreiraBuscaDecodifica::getPcInstrucaoAtual() const
 BarreiraBuscaDecodifica::BarreiraBuscaDecodifica(Decodifica *d)
 {
     deco = d;
+    pcInstrucaoAtual=0;
 }
 
 void BarreiraBuscaDecodifica::setDeco(Decodifica *value)

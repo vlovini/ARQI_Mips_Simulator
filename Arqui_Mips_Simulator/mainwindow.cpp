@@ -66,25 +66,58 @@ void MainWindow::on_btnCarregar_clicked()
 {
     mem_wb = new BarreiraMemWB();
     memDado = new MemoriaDados(mem_wb);
-    exe_mem = new BarreiraExecMem();
-    execucao = new Execucao();
+    exe_mem = new BarreiraExecMem(memDado);
+    execucao = new Execucao(exe_mem,&pc);
     deco_exe = new BarreiraDecoExec(execucao);
     decodifica = new Decodifica(deco_exe);
     busca_deco = new BarreiraBuscaDecodifica(decodifica);
     busca = new Busca(ui->lneEnderecoArquivo->text(),busca_deco);
-    mem_wb->setDecodifica(decodifica);
+    //mem_wb->setDecodifica(decodifica);
     pc=0;
+    if(ui->rbPredFixa->isChecked())
+    {
+        if(ui->chbTomado->isChecked())
+        {
+            predicao = new PredicaoFixa(busca_deco,deco_exe,exe_mem, &pc, true);
+        }else
+        {
+            predicao = new PredicaoFixa(busca_deco,deco_exe,exe_mem, &pc, false);
+        }
+
+
+
+    }
+    if(ui->rbPredicaoTabela->isChecked())
+    {
+        predicao = new PredicaoTabela(busca_deco,deco_exe,exe_mem, &pc);
+    }
+    if(ui->rbSemPred->isChecked())
+    {
+        predicao = new MecanismoPredicao(busca_deco,deco_exe,exe_mem, &pc);
+    }
     AtualizarTela();
 
 }
 
 void MainWindow::on_btnClock_clicked()
 {
-    mem_wb->Trigger();
-    //exe_mem-Trigger();
+    //mem_wb->Trigger();
+    predicao->Conferencia();
+    predicao->Predicao();
+
+    if(mem_wb->getEndereco()>0)
+    {
+        decodifica->W_B(mem_wb->getEndereco(),mem_wb->getDado());
+    }
+    exe_mem->trigger();
     deco_exe->trigger();
     busca_deco->Trigger();
     busca->Executar(pc);
     pc++;
     AtualizarTela();
+}
+
+void MainWindow::on_radioButton_pressed()
+{
+
 }
