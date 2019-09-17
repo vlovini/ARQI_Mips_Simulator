@@ -60,7 +60,20 @@ void Instrucao::setOperadorZ(int value)
     OperadorZ = value;
 }
 
+void Instrucao::setOperacao(const QString &value)
+{
+    operacao = value;
+}
 
+int Instrucao::getResultado() const
+{
+    return resultado;
+}
+
+void Instrucao::setResultado(int value)
+{
+    resultado = value;
+}
 
 Instrucao::Instrucao()
 {
@@ -72,7 +85,7 @@ Instrucao::Instrucao()
 
 Instrucao::Instrucao(int pcNaCriacao, QString inst)
 {
-    this->setPcNaCriacao(pcNaCriacao);
+    setPcNaCriacao(pcNaCriacao);
     inst.replace('(',' ');
     inst.replace(')',' ');
     QList<QString> lista = inst.split(' ');

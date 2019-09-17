@@ -26,36 +26,35 @@ Decodifica::Decodifica(BarreiraDecoExec *br)
     }
 }
 
-void Decodifica::Executar(Instrucao ins,int pc)
+void Decodifica::Executar(Instrucao ins)
 {
-    barreiraOut->setOperacao(ins.getOperacao());
+    ins.setOperacao(ins.getOperacao());
     QString op=ins.getOp1();
     if(op.contains('$'))
     {
         op.remove("$");
-        barreiraOut->setOperadorX(op.toInt());
+        ins.setOperadorX(op.toInt());
     }else
     {
-        barreiraOut->setOperadorX(registradores[op.toInt()]);
+        ins.setOperadorX(registradores[op.toInt()]);
     }
     op=ins.getOp2();
     if(op.contains('$'))
     {
         op.remove("$");
-        barreiraOut->setOperadorY(registradores[op.toInt()]);
+        ins.setOperadorY(registradores[op.toInt()]);
     }else
     {
-        barreiraOut->setOperadorY(registradores[op.toInt()]);
+        ins.setOperadorY(registradores[op.toInt()]);
 
     }
     op=ins.getOp3();
     if(op.contains('$'))
     {
         op.remove("$");
-        barreiraOut->setOperadorZ(registradores[op.toInt()]);
+        ins.setOperadorZ(registradores[op.toInt()]);
     }else
     {
-        barreiraOut->setOperadorZ(op.toInt());
+        ins.setOperadorZ(op.toInt());
     }
-    barreiraOut->setPcInstrucaoAtual(pc);
 }

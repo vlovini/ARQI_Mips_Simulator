@@ -2,6 +2,7 @@
 #define EXECUCAO_H
 #include<QString>
 #include "barreiraexecmem.h"
+#include <instrucao.h>
 class Execucao
 {
 private:
@@ -10,7 +11,7 @@ private:
 public:
     Execucao();
     Execucao(BarreiraExecMem *br, int *pc);
-    void Executar(int x, int y, int z, QString op, int pc);
+    void Executar(Instrucao ins);
 };
 
 #endif // EXECUCAO_H

@@ -18,11 +18,10 @@ void Execucao::Executar(Instrucao ins)
     barreiraOut->setZero(false);
     barreiraOut->setW_B(false);
     barreiraOut->setPcInstrucaoAtual(pc);
-    if(op=="add"||op=="addi"){
-        int result = y+z;
-        barreiraOut->setResult(result);
-
-        if(result == 0)
+    if(ins.getOperacao()=="add"||ins.getOperacao()=="addi"){
+        ins.setResultado(ins.getOperadorY()+ins.getOperadorZ());
+        
+        if(ins.getResultado() == 0)
         {
             barreiraOut->setZero(true);
         }
@@ -30,7 +29,7 @@ void Execucao::Executar(Instrucao ins)
         barreiraOut->setEndW_B(x);
 
     }
-    if(op=="sub"||op=="subi")
+    if(ins.getOperacao()=="sub"||ins.getOperacao()=="subi")
     {
         int result = y-z;
         barreiraOut->setResult(result);
@@ -42,7 +41,7 @@ void Execucao::Executar(Instrucao ins)
         barreiraOut->setW_B(true);
         barreiraOut->setEndW_B(x);
     }
-    if(op=="beq")
+    if(ins.getOperacao()=="beq")
     {
         int result;
         if(x==y)
