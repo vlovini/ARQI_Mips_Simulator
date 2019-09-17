@@ -42,4 +42,5 @@ void Busca::Executar(int pc)
 {
     Instrucao ins(memoriaPrograma[pc]);
     barreiraOut->setInst(ins);
+    barreiraOut->setPcInstrucaoAtual(pc);
 }

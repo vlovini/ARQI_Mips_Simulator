@@ -10,5 +10,8 @@ INPUT(
 ./release\barreiraexecmem.o
 ./release\memoriadados.o
 ./release\barreiramemwb.o
+./release\mecanismopredicao.o
+./release\predicaofixa.o
+./release\predicaotabela.o
 ./release\moc_mainwindow.o
 );

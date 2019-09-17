@@ -1,69 +1,77 @@
 @startuml
-class busca{
-    - LeitorArquivo: QFile
-    - MemoriaPrograma: QList<QString>
-    - BarreiraOut: *BarreiraBuscaDecodifica
+Title Simulador MIPS
+package MipsPadrao{
+    class busca{
+        - LeitorArquivo: QFile
+        - MemoriaPrograma: QList<QString>
+        - BarreiraOut: *BarreiraBuscaDecodifica
 
-    + Busca(endereco:QString, barreira:*BarreiraBuscaDecodifica)
-    + Executar( pc: int):void
+        + Busca(endereco:QString, barreira:*BarreiraBuscaDecodifica)
+        + Executar( pc: int):void
 
-}
+    }
+    class BarreiraBuscaDecodifica{
+        - Deco: decodifica
+        - Inst: instrucao
+        - pcInstrucaoAtual: int
+        + Trigger(): void
+        + SetInstr(instr:instrucao): void
+        + SetPcInstrucaoAtual(pc:int): void
+    }
+    class decodifica{
+        - BarreiraOut: *BarreiraDecoExec
+        - Registradores: QList<int>
+        + Executar( inst: instrucao, pc:int ):void
+        + WB( end:int, dado:int):void
+    }
+    class BarreiraDecoExec{
+        - Exec: execucao
+        - OperadorX: int
+        - OperadorY: int
+        - OperadorZ: int
+        - Operacao: QString
+        - pcInstrucaoAtual: int
+        + Trigger(): void
+        + SetOpX(x:int):void
+        + SetOpY(y:int):void
+        + SetOpZ(z:int):void
+        + SetOperacao(op:QString)
+        + SetPcInstrucaoAtual(pc:int): void
 
-class BarreiraBuscaDecodifica{
-    - Deco: decodifica
-    - Inst: instrucao
-    + Trigger() :void
-    + SetInstr(instr:instrucao)
-}
-class BarreiraDecoExec{
-    - Exec: execucao
-    - OperadorX: int
-    - OperadorY: int
-    - OperadorZ: int
-    - Operacao: QString
-    + Trigger(): void
-    + SetOpX(x:int):void
-    + SetOpY(y:int):void
-    + SetOpZ(z:int):void
-    + SetOperacao(op:QString)
-
-}
-class decodifica{
-    - BarreiraOut: *BarreiraDecoExec
-    - Registradores: QList<int>
-    + Executar( inst: instrucao):void
-    + WB( end:int, dado:int):void
-}
-class execucao{
-    - BarreiraOut: *BarreiraExecMem
-    + Executar( x:int, y:int, z:int, op:QString ):void
-}
-class BarreiraExecMem{
-    - Zero: bool
-    - Result: int
-    - EscreveDado: int
-    - W_R: bool
-    - PC: *int
-    + Trigger():void
-    + SetPC(pc:int):void
-    + SetZero(z:bool):void
-    + SetResult(result: int):void
-    + SetEscreveDado(end: int):void
-    + SetW_R(W_R:bool):void
-}
-class memoriaDados{
-    - BarreiraOut: *BarreiraMemWB 
-    - Memoria: QList<int>
-    +Executar(end:int, dado:int, W_R:bool):void
-}
-class BarreiraMemWB{
-    - Endereco: int
-    - Dado: int
-    + SetEndereco(end:int):void
-    + SetDado(dado:int):void
-    + Trigger():void
-}
-class instrucao{
+    }
+    class execucao{
+        - BarreiraOut: *BarreiraExecMem
+        + Executar( x:int, y:int, z:int, op:QString, pc:int ):void
+    }
+    class BarreiraExecMem{
+        - Zero: bool
+        - Result: int
+        - EscreveDado: int
+        - W_R: bool
+        - pcInstrucaoAtual: int
+        + Trigger():void
+        + SetPC(pc:int):void
+        + SetZero(z:bool):void
+        + SetResult(result: int):void
+        + SetEscreveDado(end: int):void
+        + SetW_R(W_R:bool):void
+        + SetPcInstrucaoAtual(pc:int): void
+    }
+    class memoriaDados{
+        - BarreiraOut: *BarreiraMemWB 
+        - Memoria: QList<int>
+        +Executar(end:int, dado:int, W_R:bool, pc:int):void
+    }
+    class BarreiraMemWB{
+        - Endereco: int
+        - Dado: int
+        - pcInstrucaoAtual: int
+        + SetEndereco(end:int):void
+        + SetDado(dado:int):void
+        + Trigger():void
+        + SetPcInstrucaoAtual(pc:int): void
+    }
+    class instrucao{
     - Operacao:QString
     - Op1: QString
     - Op2: QString
@@ -74,20 +82,49 @@ class instrucao{
     + GetOp2():QString
     + GetOp3():QString
 }
+}
+package SistemaPredicao{
+    class MecanismoPredicao{
+        +MecanismoPredicao( barreiraBD: *BarreiraBuscaDecodifica, 
+        barreiraDE: *BarreiraBuscaDecodifica, barreiraEM: *BarreiraExecMem, pc:*int)
+        *pc:*int
+        *brBuscaDeco: *BarreiraBuscaDecodifica
+        *brDecoExec: *BarreiraDecoExec
+        *brExecMem: *BarreiraExecMem
+        +Predicao():void
+        +Conferencia():void
+    }
+    class PredicaoFixa{
+        -tomado:bool
+        -ultimoBeq:int
+        +PredicaoFixa(args[], tomado:bool)
+        +Predicao():void
+        +Conferencia():void
+    }
+    class PredicaoTabela{
+        -tabela:QList<int>
+        +PredicaoFixa(args[])
+        +Predicao():void
+        +Conferencia():void
+    }
+}
+
 busca - BarreiraBuscaDecodifica
-busca ..> instrucao
+busca .up.> instrucao
 BarreiraBuscaDecodifica - decodifica
 decodifica - BarreiraDecoExec
 BarreiraDecoExec - execucao
 execucao - BarreiraExecMem
-BarreiraExecMem - memoriaDados
-memoriaDados -left- BarreiraMemWB
-BarreiraMemWB --- decodifica
-BarreiraBuscaDecodifica ..> instrucao
+BarreiraExecMem -right- memoriaDados
+memoriaDados -right- BarreiraMemWB
+BarreiraMemWB -left-- decodifica
+BarreiraBuscaDecodifica .up.> instrucao
+MecanismoPredicao <|-down- PredicaoFixa
+MecanismoPredicao <|-down- PredicaoTabela
 
-
-
-
+MecanismoPredicao -up- BarreiraBuscaDecodifica
+MecanismoPredicao -up- BarreiraDecoExec
+MecanismoPredicao -up- BarreiraExecMem
 
 
 @enduml

@@ -6,7 +6,7 @@ class Execucao
 {
 public:
     Execucao();
-    void Executar(int x, int y, int z, QString op);
+    void Executar(int x, int y, int z, QString op, int pc);
 };
 
 #endif // EXECUCAO_H

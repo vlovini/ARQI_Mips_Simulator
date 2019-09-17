@@ -5,6 +5,13 @@ QList<int> Decodifica::getRegistradores() const
     return registradores;
 }
 
+void Decodifica::W_B(int end, int dado)
+{
+    if(end==0)
+        return;
+    registradores[end] = dado;
+}
+
 Decodifica::Decodifica()
 {
 
@@ -13,13 +20,13 @@ Decodifica::Decodifica()
 Decodifica::Decodifica(BarreiraDecoExec *br)
 {
     barreiraOut = br;
-    for(int i=0;i<30;i++)
+    for(int i=0;i<31;i++)
     {
         registradores.append(0);
     }
 }
 
-void Decodifica::Executar(Instrucao ins)
+void Decodifica::Executar(Instrucao ins,int pc)
 {
     barreiraOut->setOperacao(ins.getOperacao());
     QString op=ins.getOp1();
@@ -50,4 +57,5 @@ void Decodifica::Executar(Instrucao ins)
     {
         barreiraOut->setOperadorZ(op.toInt());
     }
+    barreiraOut->setPcInstrucaoAtual(pc);
 }

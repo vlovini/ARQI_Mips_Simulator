@@ -5,7 +5,7 @@ Execucao::Execucao()
 
 }
 
-void Execucao::Executar(int x, int y, int z, QString op)
+void Execucao::Executar(int x, int y, int z, QString op, int pc)
 {
 
 }

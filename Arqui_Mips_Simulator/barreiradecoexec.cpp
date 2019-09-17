@@ -42,7 +42,12 @@ void BarreiraDecoExec::setOperacao(const QString &value)
 
 void BarreiraDecoExec::trigger()
 {
-    exe->Executar(operadorX,operadorY,operadorZ, operacao);
+    exe->Executar(operadorX,operadorY,operadorZ, operacao, pcInstrucaoAtual);
+}
+
+void BarreiraDecoExec::setPcInstrucaoAtual(int value)
+{
+    pcInstrucaoAtual = value;
 }
 
 BarreiraDecoExec::BarreiraDecoExec()

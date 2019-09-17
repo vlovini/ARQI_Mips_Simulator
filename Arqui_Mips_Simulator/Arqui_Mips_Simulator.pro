@@ -35,7 +35,10 @@ SOURCES += \
     execucao.cpp \
     barreiraexecmem.cpp \
     memoriadados.cpp \
-    barreiramemwb.cpp
+    barreiramemwb.cpp \
+    mecanismopredicao.cpp \
+    predicaofixa.cpp \
+    predicaotabela.cpp
 
 HEADERS += \
         instrucao.h \
@@ -47,7 +50,10 @@ HEADERS += \
     execucao.h \
     barreiraexecmem.h \
     memoriadados.h \
-    barreiramemwb.h
+    barreiramemwb.h \
+    mecanismopredicao.h \
+    predicaofixa.h \
+    predicaotabela.h
 
 FORMS += \
         mainwindow.ui

@@ -11,8 +11,9 @@ private:
 public:
     Decodifica();
     Decodifica(BarreiraDecoExec *br);
-    void Executar(Instrucao ins);
+    void Executar(Instrucao ins,int pc);
     QList<int> getRegistradores() const;
+    void W_B(int end,int dado);
 };
 
 #endif // DECODIFICA_H

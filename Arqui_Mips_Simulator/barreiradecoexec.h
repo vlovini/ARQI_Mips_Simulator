@@ -11,6 +11,7 @@ private:
     int operadorY;
     int operadorZ;
     Execucao *exe;
+    int pcInstrucaoAtual;
 
 public:
     BarreiraDecoExec();
@@ -24,6 +25,7 @@ public:
     QString getOperacao() const;
     void setOperacao(const QString &value);
     void trigger();
+    void setPcInstrucaoAtual(int value);
 };
 
 #endif // BARREIRADECOEXEC_H

@@ -10,5 +10,8 @@ INPUT(
 ./debug\barreiraexecmem.o
 ./debug\memoriadados.o
 ./debug\barreiramemwb.o
+./debug\mecanismopredicao.o
+./debug\predicaofixa.o
+./debug\predicaotabela.o
 ./debug\moc_mainwindow.o
 );

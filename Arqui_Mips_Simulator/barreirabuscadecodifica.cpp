@@ -1,5 +1,15 @@
 #include "barreirabuscadecodifica.h"
 
+void BarreiraBuscaDecodifica::setPcInstrucaoAtual(int value)
+{
+    pcInstrucaoAtual = value;
+}
+
+int BarreiraBuscaDecodifica::getPcInstrucaoAtual() const
+{
+    return pcInstrucaoAtual;
+}
+
 BarreiraBuscaDecodifica::BarreiraBuscaDecodifica(Decodifica *d)
 {
     deco = d;
@@ -22,7 +32,7 @@ void BarreiraBuscaDecodifica::setInst(const Instrucao &value)
 
 void BarreiraBuscaDecodifica::Trigger()
 {
-    deco->Executar(inst);
+    deco->Executar(inst,pcInstrucaoAtual);
 }
 
 Instrucao BarreiraBuscaDecodifica::getInst()
