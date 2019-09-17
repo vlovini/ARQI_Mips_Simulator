@@ -13,74 +13,61 @@ package MipsPadrao{
     class BarreiraBuscaDecodifica{
         - Deco: decodifica
         - Inst: instrucao
-        - pcInstrucaoAtual: int
         + Trigger(): void
         + SetInstr(instr:instrucao): void
-        + SetPcInstrucaoAtual(pc:int): void
+        + GetInstr():instrucao
     }
     class decodifica{
         - BarreiraOut: *BarreiraDecoExec
         - Registradores: QList<int>
-        + Executar( inst: instrucao, pc:int ):void
-        + WB( end:int, dado:int):void
+        + Executar( inst: instrucao ):void
+        + WB( inst: instrucao ):void
     }
     class BarreiraDecoExec{
         - Exec: execucao
-        - OperadorX: int
-        - OperadorY: int
-        - OperadorZ: int
-        - Operacao: QString
-        - pcInstrucaoAtual: int
+        - Inst:instrucao
         + Trigger(): void
-        + SetOpX(x:int):void
-        + SetOpY(y:int):void
-        + SetOpZ(z:int):void
-        + SetOperacao(op:QString)
-        + SetPcInstrucaoAtual(pc:int): void
+        + SetInstr(instr:instrucao): void
+        + GetInstr():instrucao
 
     }
     class execucao{
         - BarreiraOut: *BarreiraExecMem
-        + Executar( x:int, y:int, z:int, op:QString, pc:int ):void
+        + Executar( instr:instrucao ):void
     }
     class BarreiraExecMem{
-        - Zero: bool
-        - Result: int
-        - EscreveDado: int
-        - W_R: bool
-        - pcInstrucaoAtual: int
+        - Inst:instrucao
         + Trigger():void
-        + SetPC(pc:int):void
-        + SetZero(z:bool):void
-        + SetResult(result: int):void
-        + SetEscreveDado(end: int):void
-        + SetW_R(W_R:bool):void
-        + SetPcInstrucaoAtual(pc:int): void
+        + SetInstr(instr:instrucao): void
+        + GetInstr():instrucao
     }
     class memoriaDados{
         - BarreiraOut: *BarreiraMemWB 
         - Memoria: QList<int>
-        +Executar(end:int, dado:int, W_R:bool, pc:int):void
+        + Executar(inst:instrucao):void
     }
     class BarreiraMemWB{
-        - Endereco: int
-        - Dado: int
-        - pcInstrucaoAtual: int
-        + SetEndereco(end:int):void
-        + SetDado(dado:int):void
+        - Inst:instrucao
+        + SetInstr(instr:instrucao): void
+        + GetInstr():instrucao
         + Trigger():void
-        + SetPcInstrucaoAtual(pc:int): void
     }
     class instrucao{
     - Operacao:QString
     - Op1: QString
     - Op2: QString
     - Op3: QString
-    + instrucao(input: QString)
-    + GetOperacao():QString
-    + GetOp1():QString
-    + GetOp2():QString
-    + GetOp3():QString
+    - intOpX:int
+    - intOpY:int
+    - intOpZ:int
+    - pcNaCriacao:int
+    - valida:bool
+    - resultado:int
+    - W_B: bool
+    - endW_B:int
+    - dadoW_B:int
+    + instrucao(input: QString, pc:int)
+
 }
 }
 package SistemaPredicao{
@@ -113,12 +100,17 @@ busca - BarreiraBuscaDecodifica
 busca .up.> instrucao
 BarreiraBuscaDecodifica - decodifica
 decodifica - BarreiraDecoExec
+decodifica .up.> instrucao
 BarreiraDecoExec - execucao
+BarreiraDecoExec -up-instrucao
 execucao - BarreiraExecMem
+execucao .up.> instrucao
 BarreiraExecMem -right- memoriaDados
+BarreiraExecMem -up-instrucao
 memoriaDados -right- BarreiraMemWB
-BarreiraMemWB -left-- decodifica
-BarreiraBuscaDecodifica .up.> instrucao
+BarreiraMemWB -up-instrucao
+memoriaDados .up.> instrucao
+BarreiraBuscaDecodifica -up- instrucao
 MecanismoPredicao <|-down- PredicaoFixa
 MecanismoPredicao <|-down- PredicaoTabela
 
