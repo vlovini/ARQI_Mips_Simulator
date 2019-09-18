@@ -15,45 +15,33 @@ Execucao::Execucao(BarreiraExecMem *br, int *pc)
 
 void Execucao::Executar(Instrucao ins)
 {
-    barreiraOut->setZero(false);
-    barreiraOut->setW_B(false);
-    barreiraOut->setPcInstrucaoAtual(pc);
     if(ins.getOperacao()=="add"||ins.getOperacao()=="addi"){
         ins.setResultado(ins.getOperadorY()+ins.getOperadorZ());
-        
-        if(ins.getResultado() == 0)
-        {
-            barreiraOut->setZero(true);
-        }
-        barreiraOut->setW_B(true);
-        barreiraOut->setEndW_B(x);
 
+        ins.setW_B(true);
+        ins.setEndW_B(ins.getOperadorX());
     }
     if(ins.getOperacao()=="sub"||ins.getOperacao()=="subi")
     {
-        int result = y-z;
-        barreiraOut->setResult(result);
+        ins.setResultado(ins.getOperadorY()-ins.getOperadorZ());
 
-        if(result == 0)
-        {
-            barreiraOut->setZero(true);
-        }
-        barreiraOut->setW_B(true);
-        barreiraOut->setEndW_B(x);
+        ins.setW_B(true);
+        ins.setEndW_B(ins.getOperadorX());
     }
     if(ins.getOperacao()=="beq")
     {
         int result;
-        if(x==y)
+        if(ins.getOperadorX() == ins.getOperadorY())
         {
-            result= pc+z;
+            result= *pcSistema+ins.getOperadorZ();
             *pcSistema = result;
         }else
         {
             result = *pcSistema;
         }
-        barreiraOut->setW_B(false);
-        barreiraOut->setResult(result);
+        ins.setW_B(false);
+        ins.setResultado(result);
     }
+    barreiraOut->setIns(ins);
 
 }

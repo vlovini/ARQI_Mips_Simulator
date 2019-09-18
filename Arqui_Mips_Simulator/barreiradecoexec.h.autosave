@@ -2,6 +2,7 @@
 #define BARREIRADECOEXEC_H
 #include <QString>
 #include "execucao.h"
+#include <instrucao.h>
 
 class BarreiraDecoExec
 {

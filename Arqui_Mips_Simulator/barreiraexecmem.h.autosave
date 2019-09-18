@@ -7,6 +7,7 @@ class BarreiraExecMem
 {
 private:
     Instrucao ins;
+    MemoriaDados *mem;
 
 
 public:

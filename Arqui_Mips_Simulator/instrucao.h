@@ -18,6 +18,14 @@ private:
     
     int resultado;
 
+    bool valida;
+    bool W_B;
+
+    int endW_B;
+
+    int resultado;
+
+
 public:
     Instrucao();
     Instrucao(int, QString);

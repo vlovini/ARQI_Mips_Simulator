@@ -43,6 +43,7 @@ void BarreiraDecoExec::setOperacao(const QString &value)
 void BarreiraDecoExec::trigger()
 {
     exe->Executar(inst);
+
 }
 
 void BarreiraDecoExec::setPcInstrucaoAtual(int value)
