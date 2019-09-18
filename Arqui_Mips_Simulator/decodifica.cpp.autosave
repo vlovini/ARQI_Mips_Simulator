@@ -1,0 +1,36 @@
+#include "decodifica.h"
+
+QList<int> Decodifica::getRegistradores() const
+{
+    return registradores;
+}
+
+void Decodifica::W_B(Instrucao inst)
+{
+    if(end==0)
+        return;
+    registradores[end] = dado;
+}
+
+Decodifica::Decodifica()
+{
+
+}
+
+Decodifica::Decodifica(BarreiraDecoExec *br)
+{
+    barreiraOut = br;
+    for(int i=0;i<31;i++)
+    {
+        registradores.append(0);
+    }
+}
+
+void Decodifica::Executar(Instrucao ins)
+{
+    }else
+    {
+      
+    }
+    barreiraOut->setPcInstrucaoAtual(pc);
+}

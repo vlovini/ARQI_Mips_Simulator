@@ -1,0 +1,13 @@
+#ifndef EXECUCAO_H
+#define EXECUCAO_H
+#include<QString>
+#include "instrucao.h"
+class Execucao
+{
+public:
+    Execucao();
+    void Executar(Instrucao inst);
+    
+};
+
+#endif // EXECUCAO_H

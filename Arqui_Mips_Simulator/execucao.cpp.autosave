@@ -1,7 +1,5 @@
 #include "execucao.h"
 #include <QString>
-
-
 Execucao::Execucao()
 {
 

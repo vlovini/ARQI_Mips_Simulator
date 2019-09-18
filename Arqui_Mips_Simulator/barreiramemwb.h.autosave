@@ -1,0 +1,20 @@
+#ifndef BARREIRAMEMWB_H
+#define BARREIRAMEMWB_H
+#include "decodifica.h"
+#include "instrucao.h"
+class BarreiraMemWB
+{
+private:
+    int endereco;
+    int dado;
+    Decodifica *deco;
+    Instrucao inst;
+public:
+    BarreiraMemWB();
+    void setDecodifica(Decodifica *d);
+    void Trigger();
+     Instrucao getInst() const;
+      void setInst(const Instrucao &value);
+};
+
+#endif // BARREIRAMEMWB_H
