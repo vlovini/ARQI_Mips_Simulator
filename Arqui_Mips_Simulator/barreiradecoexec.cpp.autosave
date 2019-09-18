@@ -50,16 +50,26 @@ void BarreiraDecoExec::setPcInstrucaoAtual(int value)
     pcInstrucaoAtual = value;
 }
 
+Instrucao BarreiraDecoExec::getInst() const
+{
+    return inst;
+}
+
+void BarreiraDecoExec::setInst(const Instrucao &value)
+{
+    inst = value;
+}
+
 BarreiraDecoExec::BarreiraDecoExec()
 {
-
+    
 }
 
 BarreiraDecoExec::BarreiraDecoExec(Execucao *ex)
 {
-  exe = ex;
-  pcInstrucaoAtual = 0;
-  operacao = "";
+    exe = ex;
+    pcInstrucaoAtual = 0;
+    operacao = "";
   operadorX = 0;
   operadorY = 0;
   operadorZ = 0;

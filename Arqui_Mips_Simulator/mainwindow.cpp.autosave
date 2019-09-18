@@ -54,7 +54,7 @@ void MainWindow::AtualizarTela()
     foreach (int atual, registradores) {
         ui->txeRegistradores->append(QString::number(atual));
     }
-    ui->lneOp1DecoExe->setText(QString::number(deco_exe->getOperadorX()));
+    ui->lneOp1DecoExe->setText(QString::number(deco_exe->getInst()));
     ui->lneOp2DecoExe->setText(QString::number(deco_exe->getOperadorY()));
     ui->lneOp3DecoExe->setText(QString::number(deco_exe->getOperadorZ()));
     ui->lneOperacaoDecoExe->setText(deco_exe->getOperacao());

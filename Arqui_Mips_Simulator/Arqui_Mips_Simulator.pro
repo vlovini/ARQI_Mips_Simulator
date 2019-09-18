@@ -38,7 +38,8 @@ SOURCES += \
     barreiramemwb.cpp \
     mecanismopredicao.cpp \
     predicaofixa.cpp \
-    predicaotabela.cpp
+    predicaotabela.cpp \
+    estatisticas.cpp
 
 HEADERS += \
         instrucao.h \
@@ -53,7 +54,8 @@ HEADERS += \
     barreiramemwb.h \
     mecanismopredicao.h \
     predicaofixa.h \
-    predicaotabela.h
+    predicaotabela.h \
+    estatisticas.h
 
 FORMS += \
         mainwindow.ui

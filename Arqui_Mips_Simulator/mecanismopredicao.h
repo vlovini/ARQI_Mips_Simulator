@@ -14,8 +14,8 @@ protected:
 
 public:
     MecanismoPredicao(BarreiraBuscaDecodifica *barreiraBD,BarreiraDecoExec *barreiraDE, BarreiraExecMem *barreiraEM, int *pc );
-    void Predicao();
-    void Conferencia();
+    virtual void Predicao()=0;
+    virtual void Conferencia()=0;
 };
 
 #endif // MECANISMOPREDICAO_H

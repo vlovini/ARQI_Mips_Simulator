@@ -52,6 +52,16 @@ package MipsPadrao{
         + GetInstr():instrucao
         + Trigger():void
     }
+    class Estatisticas{
+        - IstrucoesValidas: int
+        - Ciclos: int
+        - desvios:int
+        - instrucoesInvalidas: int
+        + NovaInstrucao(inst:instrucao):void
+        + CicloConcluido():void
+        + DesvioTomado():void
+
+    }
     class instrucao{
     - Operacao:QString
     - Op1: QString

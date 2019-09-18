@@ -15,6 +15,8 @@ private:
     int OperadorX;
     int OperadorY;
     int OperadorZ;
+    
+    int resultado;
 
 public:
     Instrucao();
@@ -32,6 +34,8 @@ public:
     int getOperadorZ() const;
     void setOperadorZ(int value);
     void setOperacao(const QString &value);
+    int getResultado() const;
+    void setResultado(int value);
 };
 
 #endif // INSTRUCAO_H

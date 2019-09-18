@@ -14,6 +14,8 @@ public:
     BarreiraDecoExec(Execucao *ex);
     void trigger();
 
+    Instrucao getInst() const;
+    void setInst(const Instrucao &value);
 };
 
 #endif // BARREIRADECOEXEC_H
