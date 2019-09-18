@@ -1,39 +1,21 @@
 #include "barreiramemwb.h"
 
-void BarreiraMemWB::setDado(int value)
-{
-    dado = value;
+
+void BarreiraMemWB::Trigger(){
+
 }
 
-void BarreiraMemWB::setEndereco(int value)
+Instrucao BarreiraMemWB::getIns() const
 {
-    endereco = value;
-}
-//void BarreiraMemWB::setDecodifica(Decodifica *d)
-//{
-//    deco=d;
-//}
-
-int BarreiraMemWB::getEndereco() const
-{
-    return endereco;
+    return ins;
 }
 
-int BarreiraMemWB::getDado() const
+void BarreiraMemWB::setIns(const Instrucao &value)
 {
-    return dado;
+    ins = value;
 }
 
 BarreiraMemWB::BarreiraMemWB()
 {
 
 }
-
-//void BarreiraMemWB::Trigger()
-//{
-//   if(endereco != 0)
-//   {
-        //deco->W_B(endereco,dado);
-//    }
-
-//}

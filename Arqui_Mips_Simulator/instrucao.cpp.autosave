@@ -75,6 +75,36 @@ void Instrucao::setResultado(int value)
     resultado = value;
 }
 
+int Instrucao::getEndW_B() const
+{
+    return endW_B;
+}
+
+void Instrucao::setEndW_B(int value)
+{
+    endW_B = value;
+}
+
+bool Instrucao::getW_B() const
+{
+    return W_B;
+}
+
+void Instrucao::setW_B(bool value)
+{
+    W_B = value;
+}
+
+bool Instrucao::getValida() const
+{
+    return valida;
+}
+
+void Instrucao::setValida(bool value)
+{
+    valida = value;
+}
+
 Instrucao::Instrucao()
 {
     operacao = "nop";

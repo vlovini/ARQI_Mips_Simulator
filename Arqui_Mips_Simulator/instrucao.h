@@ -16,6 +16,14 @@ private:
     int OperadorY;
     int OperadorZ;
 
+    bool valida;
+    bool W_B;
+
+    int endW_B;
+
+    int resultado;
+
+
 public:
     Instrucao();
     Instrucao(int, QString);
@@ -32,6 +40,8 @@ public:
     int getOperadorZ() const;
     void setOperadorZ(int value);
     void setOperacao(const QString &value);
+    int getResultado() const;
+    void setResultado(int value);
 };
 
 #endif // INSTRUCAO_H

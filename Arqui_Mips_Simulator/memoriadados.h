@@ -2,6 +2,7 @@
 #define MEMORIADADOS_H
 #include "barreiramemwb.h"
 #include <QList>
+#include <instrucao.h>
 class MemoriaDados
 {
 private:

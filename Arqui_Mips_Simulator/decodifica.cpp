@@ -28,6 +28,7 @@ Decodifica::Decodifica(BarreiraDecoExec *br)
 
 void Decodifica::Executar(Instrucao ins)
 {
+
     ins.setOperacao(ins.getOperacao());
     QString op=ins.getOp1();
     if(op.contains('$'))
@@ -57,4 +58,5 @@ void Decodifica::Executar(Instrucao ins)
     {
         ins.setOperadorZ(op.toInt());
     }
+    barreiraOut->setIns(ins);
 }
