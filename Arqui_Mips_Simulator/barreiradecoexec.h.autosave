@@ -1,0 +1,24 @@
+#ifndef BARREIRADECOEXEC_H
+#define BARREIRADECOEXEC_H
+#include <QString>
+#include "execucao.h"
+#include "instrucao.h"
+
+class BarreiraDecoExec
+{
+private:
+    QString operacao;
+    Instrucao inst;
+    Execucao *exe;
+    int pcInstrucaoAtual;
+
+public:
+    BarreiraDecoExec();
+    BarreiraDecoExec(Execucao *ex);
+    Instrucao getInst() const;
+    void setInst(const Instrucao &value);    
+    void trigger();
+    void setPcInstrucaoAtual(int value);
+};
+
+#endif // BARREIRADECOEXEC_H

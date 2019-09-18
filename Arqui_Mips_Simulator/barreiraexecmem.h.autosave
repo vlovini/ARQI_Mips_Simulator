@@ -1,0 +1,27 @@
+#ifndef BARREIRAEXECMEM_H
+#define BARREIRAEXECMEM_H
+#include "instrucao.h"
+
+class BarreiraExecMem
+{
+private:
+    int pcInstrucaoAtual;
+    int result;
+    bool zero;
+    int EscreveDado;
+    bool W_R;
+public:
+    BarreiraExecMem();
+    int getEscreveDado() const;
+    void setEscreveDado(int value);
+    int getPcInstrucaoAtual() const;
+    void setPcInstrucaoAtual(int value);
+    int getResult() const;
+    void setResult(int value);
+    int getInst() const;
+    void setInst(const Instrucao &value);    
+    void trigger();
+    void Executar(bool zero, bool W_R);
+};
+
+#endif // BARREIRAEXECMEM_H

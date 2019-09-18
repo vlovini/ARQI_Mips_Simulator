@@ -1,0 +1,35 @@
+#include "barreiradecoexec.h"
+#include "instrucao.h"
+void BarreiraDecoExec::trigger()
+{
+    exe->Executar(pcInstrucaoAtual);
+}
+
+void BarreiraDecoExec::setPcInstrucaoAtual(int value)
+{
+    pcInstrucaoAtual = value;
+}
+
+BarreiraDecoExec::BarreiraDecoExec()
+{
+
+}
+Instrucao BarreiraDecoExec::getInst() const
+{
+    return inst;
+}
+
+void BarreiraDecoExec::setInst(const Instrucao &value)
+{
+    inst = value;
+}
+
+BarreiraDecoExec::BarreiraDecoExec(Execucao *ex)
+{
+  exe = ex;
+}
+
+Instrucao BarreiraDecoExec::getInst()
+{
+    return inst;
+}

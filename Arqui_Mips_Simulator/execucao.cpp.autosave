@@ -1,0 +1,10 @@
+#include "execucao.h"
+#include <QString>
+Execucao::Execucao()
+{
+
+}
+
+void Execucao::Executar(Instrucao ins)
+{
+}
