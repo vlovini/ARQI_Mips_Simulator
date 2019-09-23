@@ -10,6 +10,7 @@
 #include "mecanismopredicao.h"
 #include "predicaofixa.h"
 #include "predicaotabela.h"
+#include "estatisticas.h"
 namespace Ui {
 class MainWindow;
 }
@@ -42,6 +43,7 @@ private:
     MemoriaDados *memDado;
     BarreiraMemWB *mem_wb;
     MecanismoPredicao *predicao;
+    Estatisticas *estatis;
 
 
 

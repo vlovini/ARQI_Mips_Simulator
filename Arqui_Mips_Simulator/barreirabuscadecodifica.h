@@ -1,7 +1,6 @@
 #ifndef BARREIRABUSCADECODIFICA_H
 #define BARREIRABUSCADECODIFICA_H
 #include "decodifica.h"
-#include "instrucao.h"
 class BarreiraBuscaDecodifica
 {
 private:

@@ -8,7 +8,7 @@ private:
     int ultimoBeq;
     QList<bool> tabela;
 public:
-    PredicaoTabela(BarreiraBuscaDecodifica *barreiraBD,BarreiraDecoExec *barreiraDE, BarreiraExecMem *barreiraEM, int *pc);
+    PredicaoTabela(BarreiraBuscaDecodifica *barreiraBD,BarreiraDecoExec *barreiraDE, BarreiraExecMem *barreiraEM, int *pc, Estatisticas *e);
     void Predicao();
     void Conferencia();
 };

@@ -11,7 +11,7 @@ private:
 public:
     MemoriaDados();
     MemoriaDados(BarreiraMemWB *br);
-    void Executar(int end, int dado, bool W_R);
+    void Executar(Instrucao inst);
     QList<int> getMemoria() const;
 };
 

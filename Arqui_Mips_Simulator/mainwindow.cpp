@@ -6,6 +6,7 @@
 #include "decodifica.h"
 #include "barreiradecoexec.h"
 
+#include <QMessageBox>
 #include <QString>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -13,24 +14,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    Instrucao minhaIntrucao("lw $t1, base($t2)");
-//    QString operacao = minhaIntrucao.getOperacao();
-//    operacao = minhaIntrucao.getOp1();
-//    operacao = minhaIntrucao.getOp2();
-//    operacao = minhaIntrucao.getOp3();
-//    QString end = "C:\\TesteMips\\Teste.txt";
-//    BarreiraDecoExec *brDE = new BarreiraDecoExec();
-//    Decodifica *d = new Decodifica(brDE);
-//    BarreiraBuscaDecodifica *brBD = new BarreiraBuscaDecodifica(d);
-//    Busca *b = new Busca(end, brBD);
-//    for(int pc=0;pc<10;pc++)
-//    {
-//        brBD->Trigger();
-//        b->Executar(pc);
-
-//    }
-
-
 }
 
 MainWindow::~MainWindow()
@@ -54,22 +37,35 @@ void MainWindow::AtualizarTela()
     foreach (int atual, registradores) {
         ui->txeRegistradores->append(QString::number(atual));
     }
-    ui->lneOp1DecoExe->setText(QString::number(deco_exe->getOperadorX()));
-    ui->lneOp2DecoExe->setText(QString::number(deco_exe->getOperadorY()));
-    ui->lneOp3DecoExe->setText(QString::number(deco_exe->getOperadorZ()));
-    ui->lneOperacaoDecoExe->setText(deco_exe->getOperacao());
+    ui->lneOp1DecoExe->setText(QString::number(deco_exe->getInst().getOperadorX()));
+    ui->lneOp2DecoExe->setText(QString::number(deco_exe->getInst().getOperadorY()));
+    ui->lneOp3DecoExe->setText(QString::number(deco_exe->getInst().getOperadorZ()));
+    ui->lneOperacaoDecoExe->setText(deco_exe->getInst().getOperacao());
+
+    ui->lneEnderecoExeMem->setText(QString::number(exe_mem->getIns().getEndW_B()));
+    ui->lneResult->setText(QString::number(exe_mem->getIns().getResultado()));
+    ui->chbW_BExeMem->setChecked(exe_mem->getIns().getW_B());
+
+    ui->lneDadoMemWB->setText(QString::number(mem_wb->getInst().getResultado()));
+    ui->lneEnderecoMemWB->setText(QString::number(mem_wb->getInst().getEndW_B()));
+
+    ui->lneCiclos->setText(QString::number(estatis->getCiclos()));
+    ui->lneDesvios->setText(QString::number(estatis->getDesvios()));
+    ui->lneInstValidas->setText(QString::number(estatis->getInstrucoesValidas()));
+    ui->lneInstrInv->setText(QString::number(estatis->getInstrucoesInvalidas()));
 
     ui->lblPC->setText(QString::number(pc));
 }
 
 void MainWindow::on_btnCarregar_clicked()
 {
-    mem_wb = new BarreiraMemWB();
+    estatis = new Estatisticas();
+    mem_wb = new BarreiraMemWB(estatis);
     memDado = new MemoriaDados(mem_wb);
     exe_mem = new BarreiraExecMem(memDado);
-    execucao = new Execucao(exe_mem,&pc);
+    execucao = new Execucao(exe_mem,&pc,estatis);
     deco_exe = new BarreiraDecoExec(execucao);
-    decodifica = new Decodifica(deco_exe);
+    decodifica = new Decodifica(deco_exe,&pc);
     busca_deco = new BarreiraBuscaDecodifica(decodifica);
     busca = new Busca(ui->lneEnderecoArquivo->text(),busca_deco);
     //mem_wb->setDecodifica(decodifica);
@@ -78,10 +74,10 @@ void MainWindow::on_btnCarregar_clicked()
     {
         if(ui->chbTomado->isChecked())
         {
-            predicao = new PredicaoFixa(busca_deco,deco_exe,exe_mem, &pc, true);
+            predicao = new PredicaoFixa(busca_deco,deco_exe,exe_mem, &pc, true, estatis);
         }else
         {
-            predicao = new PredicaoFixa(busca_deco,deco_exe,exe_mem, &pc, false);
+            predicao = new PredicaoFixa(busca_deco,deco_exe,exe_mem, &pc, false, estatis);
         }
 
 
@@ -89,32 +85,43 @@ void MainWindow::on_btnCarregar_clicked()
     }
     if(ui->rbPredicaoTabela->isChecked())
     {
-        predicao = new PredicaoTabela(busca_deco,deco_exe,exe_mem, &pc);
+        predicao = new PredicaoTabela(busca_deco,deco_exe,exe_mem, &pc, estatis);
     }
     if(ui->rbSemPred->isChecked())
     {
-        predicao = new PredicaoFixa(busca_deco,deco_exe,exe_mem, &pc, false);
+        predicao = new PredicaoFixa(busca_deco,deco_exe,exe_mem, &pc, false, estatis);
     }
+    ui->btnClock->setEnabled(true);
     AtualizarTela();
 
 }
 
 void MainWindow::on_btnClock_clicked()
 {
-    //mem_wb->Trigger();
+    if(mem_wb->getInst().getOperacao() == "xxx")
+    {
+        ui->btnClock->setEnabled(false);
+        QMessageBox msgBox;
+        msgBox.setText("Fim do programa");
+        msgBox.exec();
+        return;
+    }
+    mem_wb->Trigger();
     predicao->Conferencia();
     predicao->Predicao();
 
-    if(mem_wb->getEndereco()>0)
+    if(mem_wb->getInst().getW_B())
     {
-        decodifica->W_B(mem_wb->getEndereco(),mem_wb->getDado());
+        decodifica->W_B(mem_wb->getInst());
     }
     exe_mem->trigger();
     deco_exe->trigger();
     busca_deco->Trigger();
     busca->Executar(pc);
+    estatis->CicloConcluido();
     pc++;
     AtualizarTela();
+
 }
 
 void MainWindow::on_radioButton_pressed()

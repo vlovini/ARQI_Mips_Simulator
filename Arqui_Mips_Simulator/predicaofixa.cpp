@@ -1,6 +1,6 @@
 #include "predicaofixa.h"
 
-PredicaoFixa::PredicaoFixa(BarreiraBuscaDecodifica *barreiraBD,BarreiraDecoExec *barreiraDE, BarreiraExecMem *barreiraEM, int *pc, bool tomado):MecanismoPredicao(barreiraBD,barreiraDE,barreiraEM,pc)
+PredicaoFixa::PredicaoFixa(BarreiraBuscaDecodifica *barreiraBD,BarreiraDecoExec *barreiraDE, BarreiraExecMem *barreiraEM, int *pc, bool tomado, Estatisticas *e):MecanismoPredicao(barreiraBD,barreiraDE,barreiraEM,pc,e)
 {
     desvioTomado = tomado;
     ultimoBeq = -1;
@@ -8,30 +8,35 @@ PredicaoFixa::PredicaoFixa(BarreiraBuscaDecodifica *barreiraBD,BarreiraDecoExec 
 
 void PredicaoFixa::Predicao()
 {
-    if(brBuscaDeco->getInst().getOperacao()=="beq")
+    Instrucao brBuscaDecoInst = brBuscaDeco->getInst();
+    if(brBuscaDecoInst.getOperacao()=="beq")
     {
-        ultimoBeq=brBuscaDeco->getPcInstrucaoAtual();
+        ultimoBeq=brBuscaDecoInst.getPcNaCriacao();
         if(desvioTomado)
         {
-            *pcSistema = *pcSistema + brBuscaDeco->getInst().getOp3().toInt();
+            *pcSistema = *pcSistema + brBuscaDecoInst.getOp3().toInt();
+            est->DesvioTomado();
         }
+        brBuscaDecoInst.setFeito(desvioTomado);
+        brBuscaDeco->setInst(brBuscaDecoInst);
     }
 }
 
 void PredicaoFixa::Conferencia()
 {
-    if(brExecMem->getPcInstrucaoAtual()==ultimoBeq)
+    Instrucao instBrExecMem = brExecMem->getIns();
+    Instrucao brBuscaDecoInst = brBuscaDeco->getInst();
+    Instrucao brDecoExecInst = brDecoExec->getInst();
+    if(instBrExecMem.getPcNaCriacao()==ultimoBeq)
     {
-        if(desvioTomado&&brExecMem->getResult()==brExecMem->getPcInstrucaoAtual()+1 || desvioTomado==false&&brExecMem->getResult() != brExecMem->getPcInstrucaoAtual()+1)
+
+        if(instBrExecMem.getOperacao()=="beq" && (desvioTomado&&instBrExecMem.getResultado()==instBrExecMem.getPcNaCriacao()+1) || (desvioTomado==false&&instBrExecMem.getResultado() != instBrExecMem.getPcNaCriacao()+1))
         {
-            Instrucao instNull("nop");
-            *pcSistema = brExecMem->getResult();
-            brBuscaDeco->setPcInstrucaoAtual(0);
-            brBuscaDeco->setInst(instNull);
-            brDecoExec->setOperacao("nop");
-            brDecoExec->setOperadorX(0);
-            brDecoExec->setOperadorY(0);
-            brDecoExec->setOperadorZ(0);
+            //*pcSistema = instBrExecMem.getResultado();
+            brBuscaDecoInst.setValida(false);
+            brDecoExecInst.setValida(false);
+            brBuscaDeco->setInst(brBuscaDecoInst);
+            brDecoExec->setInst(brDecoExecInst);
         }
     }
 }

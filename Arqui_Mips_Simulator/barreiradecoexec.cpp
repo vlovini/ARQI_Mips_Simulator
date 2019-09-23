@@ -1,53 +1,18 @@
 #include "barreiradecoexec.h"
 
-int BarreiraDecoExec::getOperadorZ() const
-{
-    return operadorZ;
-}
-
-void BarreiraDecoExec::setOperadorZ(int value)
-{
-    operadorZ = value;
-}
-
-int BarreiraDecoExec::getOperadorY() const
-{
-    return operadorY;
-}
-
-void BarreiraDecoExec::setOperadorY(int value)
-{
-    operadorY = value;
-}
-
-int BarreiraDecoExec::getOperadorX() const
-{
-    return operadorX;
-}
-
-void BarreiraDecoExec::setOperadorX(int value)
-{
-    operadorX = value;
-}
-
-QString BarreiraDecoExec::getOperacao() const
-{
-    return operacao;
-}
-
-void BarreiraDecoExec::setOperacao(const QString &value)
-{
-    operacao = value;
-}
-
 void BarreiraDecoExec::trigger()
 {
     exe->Executar(inst);
 }
 
-void BarreiraDecoExec::setPcInstrucaoAtual(int value)
+Instrucao BarreiraDecoExec::getInst() const
 {
-    pcInstrucaoAtual = value;
+    return inst;
+}
+
+void BarreiraDecoExec::setInst(const Instrucao &value)
+{
+    inst = value;
 }
 
 BarreiraDecoExec::BarreiraDecoExec()
@@ -57,11 +22,5 @@ BarreiraDecoExec::BarreiraDecoExec()
 
 BarreiraDecoExec::BarreiraDecoExec(Execucao *ex)
 {
-  exe = ex;
-  pcInstrucaoAtual = 0;
-  operacao = "";
-  operadorX = 0;
-  operadorY = 0;
-  operadorZ = 0;
-
+    exe = ex;
 }

@@ -1,21 +1,28 @@
 #include "barreiramemwb.h"
 
-
-void BarreiraMemWB::Trigger(){
-
+Instrucao BarreiraMemWB::getInst() const
+{
+    return inst;
 }
 
-Instrucao BarreiraMemWB::getIns() const
+void BarreiraMemWB::setInst(const Instrucao &value)
 {
-    return ins;
-}
-
-void BarreiraMemWB::setIns(const Instrucao &value)
-{
-    ins = value;
+    inst = value;
 }
 
 BarreiraMemWB::BarreiraMemWB()
 {
 
 }
+
+BarreiraMemWB::BarreiraMemWB(Estatisticas *e)
+{
+    esta = e;
+}
+
+void BarreiraMemWB::Trigger()
+{
+    if(inst.getOperacao()!="")
+        esta->NovaInstrucao(inst);
+}
+

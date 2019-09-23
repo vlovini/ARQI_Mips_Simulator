@@ -13,5 +13,6 @@ INPUT(
 ./debug\mecanismopredicao.o
 ./debug\predicaofixa.o
 ./debug\predicaotabela.o
+./debug\estatisticas.o
 ./debug\moc_mainwindow.o
 );

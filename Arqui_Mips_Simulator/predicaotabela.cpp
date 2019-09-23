@@ -1,6 +1,6 @@
 #include "predicaotabela.h"
 
-PredicaoTabela::PredicaoTabela(BarreiraBuscaDecodifica *barreiraBD, BarreiraDecoExec *barreiraDE, BarreiraExecMem *barreiraEM, int *pc):MecanismoPredicao(barreiraBD,barreiraDE,barreiraEM,pc)
+PredicaoTabela::PredicaoTabela(BarreiraBuscaDecodifica *barreiraBD, BarreiraDecoExec *barreiraDE, BarreiraExecMem *barreiraEM, int *pc,Estatisticas *e):MecanismoPredicao(barreiraBD,barreiraDE,barreiraEM,pc,e)
 {
     ultimoBeq = -1;
     for(int i=0;i<32;i++)
@@ -11,35 +11,40 @@ PredicaoTabela::PredicaoTabela(BarreiraBuscaDecodifica *barreiraBD, BarreiraDeco
 
 void PredicaoTabela::Predicao()
 {
-    if(brBuscaDeco->getInst().getOperacao()=="beq")
+    Instrucao brBuscaDecoInst = brBuscaDeco->getInst();
+    if(brBuscaDecoInst.getOperacao()=="beq")
     {
-        ultimoBeq=brBuscaDeco->getPcInstrucaoAtual();
-        int index = brBuscaDeco->getPcInstrucaoAtual() % 32;
+        ultimoBeq = brBuscaDecoInst.getPcNaCriacao();
+       int index = brBuscaDecoInst.getPcNaCriacao() % 32;
         if (tabela[index])
         {
-          *pcSistema = *pcSistema + brBuscaDeco->getInst().getOp3().toInt();
+          est->DesvioTomado();
+          *pcSistema = *pcSistema + brBuscaDecoInst.getOp3().toInt();
         }
+        brBuscaDecoInst.setFeito(tabela[index]);
+        brBuscaDeco->setInst(brBuscaDecoInst);
     }
 }
 
 void PredicaoTabela::Conferencia()
 {
-    if(brExecMem->getPcInstrucaoAtual()==ultimoBeq)
+    Instrucao instBrExecMem = brExecMem->getIns();
+    Instrucao brBuscaDecoInst = brBuscaDeco->getInst();
+    Instrucao brDecoExecInst = brDecoExec->getInst();
+    if(instBrExecMem.getPcNaCriacao()==ultimoBeq)
     {
-        int index = brBuscaDeco->getPcInstrucaoAtual() % 32;
+        int index = instBrExecMem.getPcNaCriacao() % 32;
         bool desvioTomado = tabela[index];
-        if(desvioTomado&&brExecMem->getResult()==brExecMem->getPcInstrucaoAtual()+1||desvioTomado==false&&brExecMem->getResult() != brExecMem->getPcInstrucaoAtual()+1)
+        if(desvioTomado&&instBrExecMem.getResultado()==instBrExecMem.getPcNaCriacao()+1||desvioTomado==false&&instBrExecMem.getResultado() != instBrExecMem.getPcNaCriacao()+1)
         {
-            Instrucao instNull("nop");
-            *pcSistema = brExecMem->getResult();
-            brBuscaDeco->setPcInstrucaoAtual(0);
-            brBuscaDeco->setInst(instNull);
-            brDecoExec->setOperacao("nop");
-            brDecoExec->setOperadorX(0);
-            brDecoExec->setOperadorY(0);
-            brDecoExec->setOperadorZ(0);
+           // *pcSistema = brExecMem->getIns().getResultado();
+
+            brBuscaDecoInst.setValida(false);
+            brDecoExecInst.setValida(false);;
         }
-        if(brExecMem->getResult()==brExecMem->getPcInstrucaoAtual()+1)
+        brBuscaDeco->setInst(brBuscaDecoInst);
+        brDecoExec->setInst(brDecoExecInst);
+        if(instBrExecMem.getResultado()==instBrExecMem.getPcNaCriacao()+1)
         {
             tabela[index] = false;
         }else

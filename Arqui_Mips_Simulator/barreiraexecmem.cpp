@@ -3,7 +3,7 @@
 
 void BarreiraExecMem::trigger()
 {
-    mem->Executar();
+    mem->Executar(ins);
 }
 
 Instrucao BarreiraExecMem::getIns() const
@@ -18,13 +18,10 @@ void BarreiraExecMem::setIns(const Instrucao &value)
 
 BarreiraExecMem::BarreiraExecMem()
 {
-
+    
 }
 
 BarreiraExecMem::BarreiraExecMem(MemoriaDados *m)
 {
     mem = m;
-    endW_B=0;
-    result =0;
-    W_B=false;
 }

@@ -11,20 +11,14 @@ private:
     QString op1;
     QString op2;
     QString op3;
-
     int OperadorX;
     int OperadorY;
     int OperadorZ;
-    
     int resultado;
-
     bool valida;
     bool W_B;
-
     int endW_B;
-
-    int resultado;
-
+    bool feito;
 
 public:
     Instrucao();
@@ -44,6 +38,14 @@ public:
     void setOperacao(const QString &value);
     int getResultado() const;
     void setResultado(int value);
+    bool getValida() const;
+    void setValida(bool value);
+    bool getW_B() const;
+    void setW_B(bool value);
+    int getEndW_B() const;
+    void setEndW_B(int value);
+    bool getFeito() const;
+    void setFeito(bool value);
 };
 
 #endif // INSTRUCAO_H

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1100</width>
+    <width>1232</width>
     <height>496</height>
    </rect>
   </property>
@@ -51,6 +51,9 @@
     </property>
    </widget>
    <widget class="QPushButton" name="btnClock">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -94,7 +97,7 @@
      <rect>
       <x>0</x>
       <y>50</y>
-      <width>1091</width>
+      <width>1221</width>
       <height>291</height>
      </rect>
     </property>
@@ -312,16 +315,6 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_16">
-           <property name="text">
-            <string>Zero:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lneZero"/>
-         </item>
-         <item>
           <widget class="QLabel" name="label_17">
            <property name="text">
             <string>Result:</string>
@@ -340,6 +333,13 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lneEnderecoExeMem"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="chbW_BExeMem">
+           <property name="text">
+            <string>W_B</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -413,6 +413,65 @@
        </widget>
       </widget>
      </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_9">
+       <property name="title">
+        <string>Estatisticas</string>
+       </property>
+       <widget class="QWidget" name="verticalLayoutWidget_8">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>111</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <item>
+          <widget class="QLabel" name="label_16">
+           <property name="text">
+            <string>Ciclos:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lneCiclos"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_20">
+           <property name="text">
+            <string>Desvios tomados:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lneDesvios"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_23">
+           <property name="text">
+            <string>Instruçoes validas</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lneInstValidas"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Instruçoes Invalidas:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lneInstrInv"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QRadioButton" name="rbSemPred">
@@ -473,7 +532,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1100</width>
+     <width>1232</width>
      <height>21</height>
     </rect>
    </property>

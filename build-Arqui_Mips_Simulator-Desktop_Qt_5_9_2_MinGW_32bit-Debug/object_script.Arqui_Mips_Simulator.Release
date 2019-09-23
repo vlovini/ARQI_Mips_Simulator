@@ -13,5 +13,6 @@ INPUT(
 ./release\mecanismopredicao.o
 ./release\predicaofixa.o
 ./release\predicaotabela.o
+./release\estatisticas.o
 ./release\moc_mainwindow.o
 );

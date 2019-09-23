@@ -2,16 +2,18 @@
 #define EXECUCAO_H
 #include<QString>
 #include "barreiraexecmem.h"
-#include <instrucao.h>
+#include "estatisticas.h"
 class Execucao
 {
 private:
-    BarreiraExecMem *barreiraOut;
     int *pcSistema;
+    BarreiraExecMem *barreiraOut;
+    Estatisticas *est;
 public:
     Execucao();
-    Execucao(BarreiraExecMem *br, int *pc);
-    void Executar(Instrucao ins);
+    Execucao(BarreiraExecMem *br, int *pc, Estatisticas *e);
+    void Executar(Instrucao inst);
+    
 };
 
 #endif // EXECUCAO_H

@@ -1,17 +1,19 @@
 #ifndef BARREIRAMEMWB_H
 #define BARREIRAMEMWB_H
-#include <instrucao.h>
-
+#include "instrucao.h"
+#include "estatisticas.h"
 class BarreiraMemWB
 {
-private:    
-    Instrucao ins;
+private:
+
+    Instrucao inst;
+    Estatisticas *esta;
 public:
     BarreiraMemWB();
-
+    BarreiraMemWB(Estatisticas *e);
     void Trigger();
-    Instrucao getIns() const;
-    void setIns(const Instrucao &value);
+    Instrucao getInst() const;
+    void setInst(const Instrucao &value);
 };
 
 #endif // BARREIRAMEMWB_H

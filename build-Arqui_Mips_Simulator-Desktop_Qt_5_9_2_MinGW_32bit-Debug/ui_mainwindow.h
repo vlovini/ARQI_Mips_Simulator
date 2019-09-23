@@ -81,12 +81,11 @@ public:
     QWidget *verticalLayoutWidget_5;
     QVBoxLayout *verticalLayout_5;
     QLabel *label_11;
-    QLabel *label_16;
-    QLineEdit *lneZero;
     QLabel *label_17;
     QLineEdit *lneResult;
     QLabel *label_18;
     QLineEdit *lneEnderecoExeMem;
+    QCheckBox *chbW_BExeMem;
     QGroupBox *groupBox_5;
     QWidget *verticalLayoutWidget_6;
     QVBoxLayout *verticalLayout_6;
@@ -99,6 +98,17 @@ public:
     QLineEdit *lneEnderecoMemWB;
     QLabel *label_22;
     QLineEdit *lneDadoMemWB;
+    QGroupBox *groupBox_9;
+    QWidget *verticalLayoutWidget_8;
+    QVBoxLayout *verticalLayout_8;
+    QLabel *label_16;
+    QLineEdit *lneCiclos;
+    QLabel *label_20;
+    QLineEdit *lneDesvios;
+    QLabel *label_23;
+    QLineEdit *lneInstValidas;
+    QLabel *label_3;
+    QLineEdit *lneInstrInv;
     QRadioButton *rbSemPred;
     QRadioButton *rbPredFixa;
     QRadioButton *rbPredicaoTabela;
@@ -111,7 +121,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1100, 496);
+        MainWindow->resize(1232, 496);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         lneEnderecoArquivo = new QLineEdit(centralWidget);
@@ -125,6 +135,7 @@ public:
         btnCarregar->setGeometry(QRect(230, 20, 75, 23));
         btnClock = new QPushButton(centralWidget);
         btnClock->setObjectName(QStringLiteral("btnClock"));
+        btnClock->setEnabled(false);
         btnClock->setGeometry(QRect(40, 380, 711, 61));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -134,7 +145,7 @@ public:
         lblPC->setGeometry(QRect(860, 380, 21, 51));
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(0, 50, 1091, 291));
+        horizontalLayoutWidget->setGeometry(QRect(0, 50, 1221, 291));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -317,16 +328,6 @@ public:
 
         verticalLayout_5->addWidget(label_11);
 
-        label_16 = new QLabel(verticalLayoutWidget_5);
-        label_16->setObjectName(QStringLiteral("label_16"));
-
-        verticalLayout_5->addWidget(label_16);
-
-        lneZero = new QLineEdit(verticalLayoutWidget_5);
-        lneZero->setObjectName(QStringLiteral("lneZero"));
-
-        verticalLayout_5->addWidget(lneZero);
-
         label_17 = new QLabel(verticalLayoutWidget_5);
         label_17->setObjectName(QStringLiteral("label_17"));
 
@@ -346,6 +347,11 @@ public:
         lneEnderecoExeMem->setObjectName(QStringLiteral("lneEnderecoExeMem"));
 
         verticalLayout_5->addWidget(lneEnderecoExeMem);
+
+        chbW_BExeMem = new QCheckBox(verticalLayoutWidget_5);
+        chbW_BExeMem->setObjectName(QStringLiteral("chbW_BExeMem"));
+
+        verticalLayout_5->addWidget(chbW_BExeMem);
 
 
         horizontalLayout->addWidget(groupBox_6);
@@ -406,6 +412,59 @@ public:
 
         horizontalLayout->addWidget(groupBox_7);
 
+        groupBox_9 = new QGroupBox(horizontalLayoutWidget);
+        groupBox_9->setObjectName(QStringLiteral("groupBox_9"));
+        verticalLayoutWidget_8 = new QWidget(groupBox_9);
+        verticalLayoutWidget_8->setObjectName(QStringLiteral("verticalLayoutWidget_8"));
+        verticalLayoutWidget_8->setGeometry(QRect(10, 30, 111, 211));
+        verticalLayout_8 = new QVBoxLayout(verticalLayoutWidget_8);
+        verticalLayout_8->setSpacing(6);
+        verticalLayout_8->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
+        verticalLayout_8->setContentsMargins(0, 0, 0, 0);
+        label_16 = new QLabel(verticalLayoutWidget_8);
+        label_16->setObjectName(QStringLiteral("label_16"));
+
+        verticalLayout_8->addWidget(label_16);
+
+        lneCiclos = new QLineEdit(verticalLayoutWidget_8);
+        lneCiclos->setObjectName(QStringLiteral("lneCiclos"));
+
+        verticalLayout_8->addWidget(lneCiclos);
+
+        label_20 = new QLabel(verticalLayoutWidget_8);
+        label_20->setObjectName(QStringLiteral("label_20"));
+
+        verticalLayout_8->addWidget(label_20);
+
+        lneDesvios = new QLineEdit(verticalLayoutWidget_8);
+        lneDesvios->setObjectName(QStringLiteral("lneDesvios"));
+
+        verticalLayout_8->addWidget(lneDesvios);
+
+        label_23 = new QLabel(verticalLayoutWidget_8);
+        label_23->setObjectName(QStringLiteral("label_23"));
+
+        verticalLayout_8->addWidget(label_23);
+
+        lneInstValidas = new QLineEdit(verticalLayoutWidget_8);
+        lneInstValidas->setObjectName(QStringLiteral("lneInstValidas"));
+
+        verticalLayout_8->addWidget(lneInstValidas);
+
+        label_3 = new QLabel(verticalLayoutWidget_8);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        verticalLayout_8->addWidget(label_3);
+
+        lneInstrInv = new QLineEdit(verticalLayoutWidget_8);
+        lneInstrInv->setObjectName(QStringLiteral("lneInstrInv"));
+
+        verticalLayout_8->addWidget(lneInstrInv);
+
+
+        horizontalLayout->addWidget(groupBox_9);
+
         rbSemPred = new QRadioButton(centralWidget);
         rbSemPred->setObjectName(QStringLiteral("rbSemPred"));
         rbSemPred->setGeometry(QRect(380, 10, 82, 17));
@@ -421,7 +480,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1100, 21));
+        menuBar->setGeometry(QRect(0, 0, 1232, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -461,14 +520,19 @@ public:
         groupBox_8->setTitle(QApplication::translate("MainWindow", "Execu\303\247\303\243o", Q_NULLPTR));
         groupBox_6->setTitle(QApplication::translate("MainWindow", "Exe/Mem", Q_NULLPTR));
         label_11->setText(QApplication::translate("MainWindow", "Instru\303\247\303\243o:", Q_NULLPTR));
-        label_16->setText(QApplication::translate("MainWindow", "Zero:", Q_NULLPTR));
         label_17->setText(QApplication::translate("MainWindow", "Result:", Q_NULLPTR));
         label_18->setText(QApplication::translate("MainWindow", "Endere\303\247o:", Q_NULLPTR));
+        chbW_BExeMem->setText(QApplication::translate("MainWindow", "W_B", Q_NULLPTR));
         groupBox_5->setTitle(QApplication::translate("MainWindow", "Memoria", Q_NULLPTR));
         label_19->setText(QApplication::translate("MainWindow", "MemoriaDados:", Q_NULLPTR));
         groupBox_7->setTitle(QApplication::translate("MainWindow", "MemWB", Q_NULLPTR));
         label_21->setText(QApplication::translate("MainWindow", "Endere\303\247o:", Q_NULLPTR));
         label_22->setText(QApplication::translate("MainWindow", "Dado:", Q_NULLPTR));
+        groupBox_9->setTitle(QApplication::translate("MainWindow", "Estatisticas", Q_NULLPTR));
+        label_16->setText(QApplication::translate("MainWindow", "Ciclos:", Q_NULLPTR));
+        label_20->setText(QApplication::translate("MainWindow", "Desvios tomados:", Q_NULLPTR));
+        label_23->setText(QApplication::translate("MainWindow", "Instru\303\247oes validas", Q_NULLPTR));
+        label_3->setText(QApplication::translate("MainWindow", "Instru\303\247oes Invalidas:", Q_NULLPTR));
         rbSemPred->setText(QApplication::translate("MainWindow", "Sem predi\303\247\303\243o", Q_NULLPTR));
         rbPredFixa->setText(QApplication::translate("MainWindow", "Predi\303\247\303\243o fixa", Q_NULLPTR));
         rbPredicaoTabela->setText(QApplication::translate("MainWindow", "Predi\303\247\303\243o por tabela", Q_NULLPTR));

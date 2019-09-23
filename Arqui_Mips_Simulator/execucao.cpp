@@ -1,23 +1,19 @@
 #include "execucao.h"
 #include <QString>
-
-
 Execucao::Execucao()
 {
 
 }
 
-Execucao::Execucao(BarreiraExecMem *br, int *pc)
+Execucao::Execucao(BarreiraExecMem *br, int *pc, Estatisticas *e)
 {
     barreiraOut = br;
     pcSistema = pc;
+    est = e;
 }
 
 void Execucao::Executar(Instrucao ins)
 {
-    barreiraOut->setZero(false);
-    barreiraOut->setW_B(false);
-    barreiraOut->setPcInstrucaoAtual(pc);
     if(ins.getOperacao()=="add"||ins.getOperacao()=="addi"){
         ins.setResultado(ins.getOperadorY()+ins.getOperadorZ());
 
@@ -36,14 +32,27 @@ void Execucao::Executar(Instrucao ins)
         int result;
         if(ins.getOperadorX() == ins.getOperadorY())
         {
-            result= *pcSistema+ins.getOperadorZ();
-            *pcSistema = result;
+            result= ins.getPcNaCriacao()+ins.getOperadorZ()+1;
+            if(!ins.getFeito())
+            {
+                est->DesvioTomado();
+                *pcSistema = result;
+            }
+
+
         }else
         {
-            result = *pcSistema;
+            if(ins.getFeito())
+            {
+                result = ins.getPcNaCriacao()+1;
+                *pcSistema = result;
+            }
+            result = ins.getPcNaCriacao()+1;
+            *pcSistema = result;
         }
         ins.setW_B(false);
         ins.setResultado(result);
     }
+    barreiraOut->setIns(ins);
 
 }

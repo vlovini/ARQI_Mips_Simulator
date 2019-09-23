@@ -11,7 +11,7 @@ void BarreiraBuscaDecodifica::setDeco(Decodifica *value)
     deco = value;
 }
 
-Instrucao BarreiraBuscaDecodifica::getInst() const
+Instrucao BarreiraBuscaDecodifica::getInst()
 {
     return inst;
 }
@@ -26,8 +26,4 @@ void BarreiraBuscaDecodifica::Trigger()
     deco->Executar(inst);
 }
 
-Instrucao BarreiraBuscaDecodifica::getInst()
-{
-    return inst;
-}
 

@@ -1,12 +1,12 @@
 #ifndef BARREIRAEXECMEM_H
 #define BARREIRAEXECMEM_H
 #include "memoriadados.h"
-#include "instrucao.h"
 
 class BarreiraExecMem
 {
 private:
     Instrucao ins;
+    MemoriaDados *mem;
 
 
 public:

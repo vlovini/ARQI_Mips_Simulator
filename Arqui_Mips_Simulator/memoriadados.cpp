@@ -19,14 +19,7 @@ MemoriaDados::MemoriaDados(BarreiraMemWB *br)
         }
 }
 
-void MemoriaDados::Executar(int end, int dado, bool W_B)
+void MemoriaDados::Executar(Instrucao inst)
 {
-    barreiraOut->setEndereco(0);
-    if(W_B){
-        barreiraOut->setEndereco(end);
-        barreiraOut->setDado(dado);
-    }else{
-        barreiraOut->setDado(memoria[end]);
-
-    }
+    barreiraOut->setInst(inst);
 }

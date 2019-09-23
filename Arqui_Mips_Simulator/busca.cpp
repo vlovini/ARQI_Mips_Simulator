@@ -40,6 +40,15 @@ Busca::Busca(QString end, BarreiraBuscaDecodifica *barreira)
 
 void Busca::Executar(int pc)
 {
-    Instrucao ins(pc,memoriaPrograma[pc]);
-    barreiraOut->setInst(ins);
+    if(pc<memoriaPrograma.length())
+    {
+        Instrucao ins(pc,memoriaPrograma[pc]);
+        barreiraOut->setInst(ins);
+    }else
+    {
+        Instrucao ins(pc,"xxx");
+        barreiraOut->setInst(ins);
+    }
+
+
 }

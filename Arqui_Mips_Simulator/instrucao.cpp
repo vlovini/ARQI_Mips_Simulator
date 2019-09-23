@@ -60,14 +60,71 @@ void Instrucao::setOperadorZ(int value)
     OperadorZ = value;
 }
 
+int Instrucao::getResultado() const
+{
+    return resultado;
+}
 
+void Instrucao::setResultado(int value)
+{
+    resultado = value;
+}
+
+
+
+bool Instrucao::getValida() const
+{
+    return valida;
+}
+
+void Instrucao::setValida(bool value)
+{
+    valida = value;
+}
+
+bool Instrucao::getW_B() const
+{
+    return W_B;
+}
+
+void Instrucao::setW_B(bool value)
+{
+    W_B = value;
+}
+
+int Instrucao::getEndW_B() const
+{
+    return endW_B;
+}
+
+void Instrucao::setEndW_B(int value)
+{
+    endW_B = value;
+}
+
+bool Instrucao::getFeito() const
+{
+    return feito;
+}
+
+void Instrucao::setFeito(bool value)
+{
+    feito = value;
+}
 
 Instrucao::Instrucao()
 {
-    operacao = "nop";
+    operacao = "";
     op1 = "0";
     op2 = "0";
     op3 = "0";
+    OperadorX =0;
+    OperadorY =0;
+    OperadorZ =0;
+    valida = true;
+    W_B = false;
+    endW_B = 0;
+    resultado =0;
 }
 
 Instrucao::Instrucao(int pcNaCriacao, QString inst)
@@ -79,6 +136,11 @@ Instrucao::Instrucao(int pcNaCriacao, QString inst)
     op1="";
     op2="";
     op3="";
+    valida = true;
+    feito = false;
+    W_B = false;
+    endW_B = 0;
+    resultado =0;
     operacao = lista[0];
     if(lista.length()>1)
     {
